@@ -10,12 +10,22 @@ router.get('/', function(req, res){
 router.get('/about', function(req, res){
   res.render('about', {
     title: 'About'
+});
+router.get('/chart', function(req, res){
+  res.render('chart', {
+    title: 'Chart'
   });
 });
 
 router.get('/contact', function(req, res){
   res.render('contact', {
     title: 'Contact'
+  });
+});
+
+router.get('/login', function(req, res){
+  res.render('login', {
+    title: 'Login'
   });
 });
 

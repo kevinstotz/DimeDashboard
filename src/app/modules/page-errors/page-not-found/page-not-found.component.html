@@ -1,0 +1,16 @@
+<section class="bodyPartTwo">
+	<div class="container">
+
+    <div class="bodyInnerPage col-rs-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-md-offset-3 col-xs-offset-3 col-sm-offset-3 col-lg-offset-3 fadeInDown">
+      <div class="row">
+        <h2><span class="col col-4"></span></h2>
+        <span class="col col-8" *ngIf="message" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">{{message.text}}</span>
+      </div>
+			Page Not Found
+      ﻿<div class="row col-md-6col-md-offset-0">
+
+
+      </div>
+    </div>
+  </div>
+</section>

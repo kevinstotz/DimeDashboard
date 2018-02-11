@@ -1,0 +1,29 @@
+﻿{
+  "compilerOptions": {
+    "baseUrl": "",
+    "declaration": false,
+    "outDir": "../dist/out-tsc",
+    "rootDir": "./",
+    "paths": {
+      "*": ["src/*"]
+    },
+    "typeRoots": [
+      "../node_modules/@types"
+    ],
+    "mapRoot": "./",
+    "module": "es6",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": [ "es6", "dom" ],
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "removeComments": true,
+    "sourceMap": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "target": "es5"
+  },
+
+  "include": ["../node_modules/angular-bootstrap-md/**/*.ts",  "../src/**/*.ts"],
+  "compileOnSave": true,
+  "buildOnSave": true
+}
