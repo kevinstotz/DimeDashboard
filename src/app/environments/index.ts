@@ -58,11 +58,12 @@ export class Environment  {
             this.COOKIE_EXPIRATION = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
         }
         if (environment.envName == 'prod') {
-          enableProdMode();
+          //enableProdMode();
           this.PRODUCTION = true;
           this.PROTOCOL = this.SECURE;
           this.DOMAIN = '.yogishouse.com';
 
+          this.API_PORT = 443;
           this.API_HOSTNAME = 'api-dime';
           this.API_PATH = '/api';
           this.API_URL = this.PROTOCOL.concat(this.API_HOSTNAME, this.DOMAIN, ':', this.API_PORT.toString());
