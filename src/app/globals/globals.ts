@@ -1,7 +1,7 @@
 let DOMAIN = '.yogishouse.com';
-let DASHBOARD_HOSTNAME = 'dashboard.dime';
-let WEBSITE_HOSTNAME = 'www.dime';
-let API_HOSTNAME = 'api.dime';
+let DASHBOARD_HOSTNAME = 'dashboard-dime';
+let WEBSITE_HOSTNAME = 'www-dime';
+let API_HOSTNAME = 'api-dime';
 
 let COOKIE_EXPIRATION = new Date(new Date().setFullYear(new Date().getFullYear() + 1))
 let SECURE = 'https://';
@@ -9,11 +9,11 @@ let UNSECURE = 'http://';
 let PROTOCOL = UNSECURE;
 
 let API_PATH = '/api';
-let API_PORT = 10006;
+let API_PORT = 443;
 let API_URL = PROTOCOL + API_HOSTNAME + DOMAIN;
-let DASHBOARD_PORT = 10005;
+let DASHBOARD_PORT = 443;
 let DASHBOARD_URL = PROTOCOL + DASHBOARD_HOSTNAME + DOMAIN;
-let WEBSITE_PORT = 10004;
+let WEBSITE_PORT = 443;
 let WEBSITE_URL = PROTOCOL + WEBSITE_HOSTNAME + DOMAIN;
 
 export const GlobalVariable = Object.freeze({
