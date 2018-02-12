@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GlobalVariable } from '../globals/index';
+import { Environment } from '../environments/index';
 import { AuthenticationService } from '../_services/index';
 import { Router} from '@angular/router';
 
@@ -9,15 +9,17 @@ import { Router} from '@angular/router';
   styleUrls: ['./logout.component.scss']
 })
 export class LogoutComponent implements OnInit {
+    private environment: Environment;
 
     constructor(
         private authenticationService: AuthenticationService,
-        private router: Router
-    ) { }
+        private router: Router) {
+            this.environment = new Environment();
+        }
 
     ngOnInit() {
         this.authenticationService.logout();
-        window.location.href=GlobalVariable.WEBSITE_URL;
+        window.location.href=this.environment.global.WEBSITE_URL;
     }
 
 }

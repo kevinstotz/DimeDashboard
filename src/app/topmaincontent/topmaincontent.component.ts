@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GlobalVariable } from '../globals/index';
-
+import { Environment } from '../environments/index';
 
 @Component({
   selector: 'app-topmaincontent',

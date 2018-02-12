@@ -1,24 +1,29 @@
-﻿import { Injectable } from '@angular/core';
+﻿import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
-import { GlobalVariable } from '../globals/globals';
+import { Environment } from '../environments/index';
 import { Authentication, Oauth2 } from '../_models/index';
 import { CookieService, CookieOptions } from 'ngx-cookie';
 
 @Injectable()
-export class AuthenticationService {
-    private oauth2 = new Oauth2();
-    public loggedin: boolean = false;
+export class AuthenticationService implements OnInit {
+    private oauth2: Oauth2;
+    private loggedin: boolean;
     private cookieOptions: CookieOptions;
+    private environment: Environment;
 
     constructor(
       private http: HttpClient,
-      private cookieService: CookieService
-    ) { }
+      private cookieService: CookieService) {
+        this.oauth2 = new Oauth2();
+        this.loggedin = false;
+        this.environment = new Environment();
+        this.cookieOptions = { domain: this.environment.global.DOMAIN };
+    }
 
     ngOnInit() {
-        this.cookieOptions = { domain: GlobalVariable.DOMAIN };
+
     }
 
     login(username: string, password: string) {
@@ -27,7 +32,7 @@ export class AuthenticationService {
         this.oauth2.password = password;
         this.oauth2.client_id = "HJ4fGABHYt3jBamsPsmnW3qziY3JAT4Oz4h6NZUe";
 
-        return this.http.post<Authentication>(GlobalVariable.LOGIN_URL, this.oauth2)
+        return this.http.post<Authentication>(this.environment.api.LOGIN_URL, this.oauth2)
             .map((authenticationResponse: Authentication) => {
                 // login successful if there's a jwt token in the response
                 if (authenticationResponse && authenticationResponse.access_token) {

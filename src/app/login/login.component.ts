@@ -2,7 +2,7 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService, AuthenticationService } from '../_services/index';
 import { User, Authentication } from '../_models/index';
-import { GlobalVariable } from '../globals/index';
+import { Environment } from '../environments/index';
 
 @Component({
     moduleId: 'module.id',
@@ -10,19 +10,26 @@ import { GlobalVariable } from '../globals/index';
 })
 
 export class LoginComponent implements OnInit {
-    private user = new User();
-    private loading = false;
+    private user: User;
+    private loading: boolean;
+    private environment: Environment;
     private returnUrl: string;
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService) { }
+        private alertService: AlertService) {
+            this.user = new User();
+            this.loading = false;
+            this.returnUrl = "";
+            this.environment = new Environment();
+            this.authenticationService.logout();
+    }
 
     ngOnInit() {
         // reset login status
-        this.authenticationService.logout();
+        //this.authenticationService.logout();
 
         // get return url from route parameters or default to '/'
         //this.returnUrl = this.route.snapshot.queryParams['dashboard'] || '/';
@@ -33,7 +40,7 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.user.username, this.user.password)
             .subscribe(
                   (authenticationResponse: Authentication) => {
-                    this.router.navigate([GlobalVariable.DASHBOARD_URL]);
+                    this.router.navigate([this.environment.global.DASHBOARD_URL]);
                     this.loading = false;
                 },
                 error => {

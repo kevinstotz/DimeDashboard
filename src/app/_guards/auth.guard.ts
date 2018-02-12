@@ -1,17 +1,19 @@
 ﻿import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { GlobalVariable } from '../globals/index';
+import { Environment } from '../environments/index';
 import { CookieService, CookieOptions } from 'ngx-cookie';
 import { Authentication } from '../_models/index';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
     private userCookie: String;
+    private environment: Environment;
 
     constructor(
-      private router: Router,
-      private _cookieService: CookieService
-    ) { }
+        private router: Router,
+        private _cookieService: CookieService) {
+            this.environment = new Environment();
+    }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         this.userCookie = this._cookieService.get('currentUser');
@@ -24,7 +26,7 @@ export class AuthGuard implements CanActivate {
         }
         // not logged in so redirect to login page with the return url
         //this.router.navigate(['login'], { queryParams: { returnUrl: state.url }});
-        // window.location.href=GlobalVariable.WEBSITE_URL;
+        window.location.href=this.environment.global.WEBSITE_URL;
         return false;
     }
 }

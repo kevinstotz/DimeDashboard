@@ -11,7 +11,7 @@ export class PageNotFoundComponent implements OnInit {
   constructor(private alertService: AlertService) { }
 
   ngOnInit() {
-    this.alertService.success('Page Not Found successful', true);
+      this.alertService.success('Page Not Found successful', true);
   }
 
 }

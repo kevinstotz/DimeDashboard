@@ -11,10 +11,12 @@ import { AuthenticationService } from '../_services/index';
 export class HeaderComponent implements OnInit {
   private isUserLoggedIn: boolean;
 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(private authenticationService: AuthenticationService) {
+      this.isUserLoggedIn = this.authenticationService.isLoggedIn();
+}
 
   ngOnInit() {
-      this.isUserLoggedIn = this.authenticationService.isLoggedIn();
+      
   }
 
 }
