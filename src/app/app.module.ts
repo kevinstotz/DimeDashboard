@@ -9,6 +9,7 @@ import { DeviceDetectorModule } from 'ngx-device-detector';
 import { MatTableModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material';
 import { CookieModule, CookieService } from 'ngx-cookie';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import {} from 'jasmine';
 
@@ -47,6 +48,7 @@ import { TopmaincontentComponent } from './topmaincontent/index';
         HttpClientModule,
         MatTableModule,
         MatDialogModule,
+        MatTooltipModule,
         MDBBootstrapModule.forRoot(),
         CookieModule.forRoot()
     ],
