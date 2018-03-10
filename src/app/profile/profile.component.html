@@ -2,112 +2,146 @@
 <div class="main-panel">
   <app-topmaincontent></app-topmaincontent>
      <div class="content">
-         <div class="container-fluid">
+         <div class="container">
              <div class="row">
-                 <div class="col-md-8">
+                 <div class="col-md-12">
                      <div class="card">
                          <div class="card-header" data-background-color="green">
                              <h4 class="title">Edit Profile</h4>
                              <p class="category">Complete your profile</p>
                          </div>
                          <div class="card-content">
-                             <form>
+                             <form [formGroup]="userProfileForm" name="userProfileForm" (ngSubmit)="updateUserProfile(userProfileForm)">
                                  <div class="row">
-                                     <div class="col-md-5">
-                                         <div class="form-group label-floating">
-                                             <label class="control-label">Company (disabled)</label>
-                                             <input type="text" class="form-control" disabled>
-                                         </div>
-                                     </div>
-                                     <div class="col-md-3">
-                                         <div class="form-group label-floating">
-                                             <label class="control-label">Username</label>
-                                             <input type="text" class="form-control">
-                                         </div>
-                                     </div>
+
                                      <div class="col-md-4">
-                                         <div class="form-group label-floating">
-                                             <label class="control-label">Email address</label>
-                                             <input type="email" class="form-control">
+                                         <div class="form-group">
+                                             <mat-form-field>
+                                                 <mat-label>Company</mat-label>
+                                             <input matInput type="text" class="form-control" formControlName="company">
+                                            </mat-form-field>
                                          </div>
                                      </div>
+
+                                     <div class="col-md-4">
+                                         <div class="form-group">
+                                             <mat-form-field>
+                                                 <mat-label>Email</mat-label>
+                                             <input matInput type="text" class="form-control" formControlName="email">
+                                            </mat-form-field>
+                                         </div>
+                                     </div>
+
+                                     <div class="col-md-4">
+                                          <img src={{userProfileForm.controls.avatar.value}}/>
+                                     </div>
+
                                  </div>
                                  <div class="row">
-                                     <div class="col-md-6">
-                                         <div class="form-group label-floating">
-                                             <label class="control-label">Fist Name</label>
-                                             <input type="text" class="form-control">
-                                         </div>
+                                   <div class="col-md-4">
+                                     <div class="form-group">
+                                        <mat-form-field>
+                                          <mat-label>First Name</mat-label>
+                                          <input matInput type="text" class="form-control"  formControlName="firstName" >
+                                       </mat-form-field>
                                      </div>
-                                     <div class="col-md-6">
-                                         <div class="form-group label-floating">
-                                             <label class="control-label">Last Name</label>
-                                             <input type="text" class="form-control">
-                                         </div>
+                                   </div>
+                                   <div class="col-md-4">
+                                     <div class="form-group">
+                                        <mat-form-field>
+                                          <mat-label>Last Name</mat-label>
+                                          <input matInput type="text" class="form-control" formControlName="lastName" >
+                                       </mat-form-field>
                                      </div>
+                                   </div>
+
+                                   <div class="col-md-4">
+                                     <div class="form-group">
+                                        <mat-form-field>
+                                          <mat-label>Phone</mat-label>
+                                          <input matInput type="text" class="form-control" formControlName="phoneNumber" >
+                                       </mat-form-field>
+                                     </div>
+                                   </div>
+
                                  </div>
                                  <div class="row">
                                      <div class="col-md-12">
-                                         <div class="form-group label-floating">
-                                             <label class="control-label">Adress</label>
-                                             <input type="text" class="form-control">
-                                         </div>
+                                       <div class="form-group">
+                                          <mat-form-field>
+                                            <mat-label>Address</mat-label>
+                                            <input matInput type="text" class="form-control" formControlName="address1" >
+                                         </mat-form-field>
+                                       </div>
                                      </div>
                                  </div>
                                  <div class="row">
-                                     <div class="col-md-4">
-                                         <div class="form-group label-floating">
-                                             <label class="control-label">City</label>
-                                             <input type="text" class="form-control">
+                                       <div class="col-md-3">
+                                         <div class="form-group">
+                                            <mat-form-field>
+                                              <mat-label class="control-label">City</mat-label>
+                                              <mat-select formControlName="city" class="form-control"  [(ngModel)]="selectedCity.name">
+                                                  <mat-option *ngFor="let city of cities" [value]="city">
+                                                    {{city.name}}
+                                                  </mat-option>
+                                                </mat-select>
+                                           </mat-form-field>
                                          </div>
-                                     </div>
-                                     <div class="col-md-4">
-                                         <div class="form-group label-floating">
-                                             <label class="control-label">Country</label>
-                                             <input type="text" class="form-control">
+                                       </div>
+
+                                       <div class="col-md-3">
+                                          <div class="form-group">
+                                             <mat-form-field>
+                                               <mat-label>State</mat-label>
+                                                   <mat-select formControlName="state" class="form-control" [(ngModel)]="selectedState.name">
+                                                     <mat-option *ngFor="let state of states" [value]="state">
+                                                       {{state.name}}
+                                                     </mat-option>
+                                                   </mat-select>
+                                               </mat-form-field>
+                                           </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                           <div class="form-group">
+                                             <mat-form-field>
+                                               <mat-label>Country</mat-label>
+                                                   <mat-select formControlName="country" class="form-control" [(ngModel)]="selectedCountry" >
+                                                     <mat-option *ngFor="let country of countries" [value]="country">
+                                                       {{country.name}}
+                                                     </mat-option>
+                                                   </mat-select>
+                                               </mat-form-field>
+                                           </div>
+                                        </div>
+
+                                       <div class="col-md-3">
+                                         <div class="form-group">
+                                            <mat-form-field>
+                                              <mat-label>Postal Code</mat-label>
+                                              <input matInput type="text" class="form-control"  formControlName="zipcode" >
+                                           </mat-form-field>
                                          </div>
-                                     </div>
-                                     <div class="col-md-4">
-                                         <div class="form-group label-floating">
-                                             <label class="control-label">Postal Code</label>
-                                             <input type="text" class="form-control">
-                                         </div>
-                                     </div>
+                                       </div>
                                  </div>
                                  <div class="row">
                                      <div class="col-md-12">
                                          <div class="form-group">
-                                             <label>About Me</label>
-                                             <div class="form-group label-floating">
-                                                 <label class="control-label"></label>
-                                                 <textarea class="form-control" rows="5"></textarea>
-                                             </div>
+                                           <mat-form-field>
+                                             <mat-label>About Me</mat-label>
+                                             <input matInput type="text" class="form-control" formControlName="about" >
+                                          </mat-form-field>
                                          </div>
                                      </div>
                                  </div>
+
                                  <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
                                  <div class="clearfix"></div>
                              </form>
                          </div>
                      </div>
                  </div>
-                 <div class="col-md-4">
-                     <div class="card card-profile">
-                         <div class="card-avatar">
-                             <a href="#pablo">
-                                 <img class="img" src="../assets/img/faces/marc.jpg" />
-                             </a>
-                         </div>
-                         <div class="content">
-                             <h6 class="category text-gray">CEO / Co-Founder</h6>
-                             <h4 class="card-title">Alec Thompson</h4>
-                             <p class="card-content">
-                                 Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                             </p>
-                             <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
-                         </div>
-                     </div>
-                 </div>
+
              </div>
          </div>
      </div>

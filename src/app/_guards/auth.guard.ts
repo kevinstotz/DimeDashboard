@@ -17,12 +17,15 @@ export class AuthGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         this.userCookie = this._cookieService.get('currentUser');
-        console.log(this.userCookie);
         if (this.userCookie) {
           localStorage.setItem('currentUser', JSON.stringify(this.userCookie));
           sessionStorage.setItem('currentUser', JSON.stringify(this.userCookie));
-            // logged in so return true
+          this.userCookie = this._cookieService.get('Id');
+          if (this.userCookie) {
+            localStorage.setItem('Id', JSON.stringify(this.userCookie));
+            sessionStorage.setItem('Id', JSON.stringify(this.userCookie));
             return true;
+          }
         }
         // not logged in so redirect to login page with the return url
         //this.router.navigate(['login'], { queryParams: { returnUrl: state.url }});

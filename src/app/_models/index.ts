@@ -4,3 +4,6 @@ export * from './status';
 export * from './authentication';
 export * from './oauth2';
 export * from './profile';
+export * from './address';
+export * from './dime';
+export * from './file-upload';

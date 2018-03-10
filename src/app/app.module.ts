@@ -1,71 +1,102 @@
-﻿import { NgModule, NO_ERRORS_SCHEMA }      from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA }      from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AppRoutingModule }        from './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from  '@angular/platform-browser/animations';
+import { CookieModule, CookieService } from 'ngx-cookie';
+import { DeviceDetectorModule } from 'ngx-device-detector';
 import { FormsModule, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { PageErrorsModule }  from './modules/page-errors/index';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { DeviceDetectorModule } from 'ngx-device-detector';
-import { MatTableModule } from '@angular/material';
-import { MatDialogModule } from '@angular/material';
-import { CookieModule, CookieService } from 'ngx-cookie';
+import { MatListModule } from '@angular/material/list';
+import { MatTableModule, MatSelectModule, MatOptionModule, MatDialogModule } from '@angular/material';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatInputModule, MatSlideToggleModule, MatButtonModule, MatFormFieldModule } from '@angular/material';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { PageErrorsModule }  from './modules/page-errors/index';
 
 import {} from 'jasmine';
 
-// used to create fake backend
-import { fakeBackendProvider } from './_helpers/index';
-import { AppComponent }  from './app.component';
-import { AppRoutingModule }        from './app.routing';
-import { AlertComponent } from './_directives/index';
-import { LeftnavitemComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
-import { JwtInterceptor } from './_helpers/index';
+import { JwtInterceptor, DivisionPipe } from './_helpers/index';
+import { AlertService, AuthenticationService, UserService, FileUploadService } from './_services/index';
+import { DimeService, CountryListService, CityListService, StateListService, ZipcodeListService } from './_services/index';
 
-import { AlertService, AuthenticationService, UserService } from './_services/index';
-import { HomeComponent } from './home/index';
-import { LoginComponent } from './login/index';
-import { HeaderComponent } from './header/index';
-import { FooterComponent } from './footer/index';
-import { DashboardComponent } from './dashboard/index';
 import { AboutComponent } from './about/index';
+import { AlertComponent } from './_directives/index';
+import { AppComponent }  from './app.component';
+import { HistoryComponent } from './history/index';
+import { FooterComponent } from './footer/index';
+import { HeaderComponent } from './header/index';
+import { HomeComponent } from './home/index';
+import { LeftnavComponent } from './leftnav/index';
+import { LeftnavitemComponent } from './_directives/index';
+import { LoginComponent } from './login/index';
 import { LogoutComponent } from './logout/index';
 import { ProfileComponent } from './profile/index';
-import { LeftnavComponent } from './leftnav/index';
 import { TopmaincontentComponent } from './topmaincontent/index';
+import { DepositComponent } from './deposit/index';
+import { DocumentsComponent } from './documents/index';
+import { DimetableComponent } from './dimetable/dimetable.component';
 
 
 @NgModule({
     imports: [
-        BrowserModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        PageErrorsModule,
         AppRoutingModule,
-        BrowserModule,
         BrowserAnimationsModule,
+        BrowserModule,
+        CookieModule.forRoot(),
+        CommonModule,
+        FormsModule,
         HttpClientModule,
-        MatTableModule,
+        MatButtonModule,
         MatDialogModule,
+        MatDividerModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatListModule,
+        MatOptionModule,
+        MatSelectModule,
+        MatSlideToggleModule,
+        MatTabsModule,
+        MatTableModule,
         MatTooltipModule,
         MDBBootstrapModule.forRoot(),
-        CookieModule.forRoot()
+        PageErrorsModule,
+        ReactiveFormsModule
+    ],
+    exports: [
+        CommonModule,
+        MatButtonModule,
+        MatDividerModule,
+        MatFormFieldModule,
+        HttpClientModule,
+        MatInputModule,
+        MatListModule,
+        MatOptionModule,
+        MatSelectModule,
+        MatSlideToggleModule,
+        MatSlideToggleModule
     ],
     declarations: [
-        AppComponent,
-        AlertComponent,
-        HomeComponent,
-        LoginComponent,
-        HeaderComponent,
-        FooterComponent,
-        DashboardComponent,
         AboutComponent,
+        AlertComponent,
+        AppComponent,
+        FooterComponent,
+        DivisionPipe,
+        HeaderComponent,
+        HistoryComponent,
+        HomeComponent,
+        LeftnavComponent,
+        LeftnavitemComponent,
+        LoginComponent,
         LogoutComponent,
         ProfileComponent,
-        LeftnavitemComponent,
-        LeftnavComponent,
-        TopmaincontentComponent
+        TopmaincontentComponent,
+        DepositComponent,
+        DocumentsComponent,
+        DimetableComponent
     ],
     entryComponents: [
     ],
@@ -73,15 +104,19 @@ import { TopmaincontentComponent } from './topmaincontent/index';
         AuthGuard,
         AlertService,
         AuthenticationService,
-        UserService,
+        CookieService,
+        CountryListService,
+        DimeService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: JwtInterceptor,
             multi: true
         },
-        // provider used to create fake backend
-        fakeBackendProvider,
-        CookieService
+        FileUploadService,
+        UserService,
+        StateListService,
+        ZipcodeListService,
+        CityListService
     ],
     schemas: [ NO_ERRORS_SCHEMA ],
     bootstrap: [AppComponent]

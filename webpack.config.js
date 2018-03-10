@@ -15,13 +15,17 @@ const extractSass = new ExtractTextPlugin({
 
 module.exports = {
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx']
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    modules: [
+      path.resolve('.'),
+      path.resolve('./node_modules')
+    ]
   },
   target: 'node',
   context: __dirname,
   devtool: debug ? "inline-sourcemap" : null,
   entry: {
-      app: "./src/app/main.ts"
+      app: "./src/app/main"
   },
   output: {
     path: path.join(__dirname, clientBundleOutputDir),

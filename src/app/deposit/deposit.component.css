@@ -1,0 +1,29 @@
+
+.demo-tab-group {
+  border: 1px solid #000000;
+  color: red !important;
+}
+
+.demo-tab-content {
+  padding: 16px;
+  color: red !important;
+}
+
+
+.mat-tab-label, .mat-tab-link {
+  color: red !important;
+}
+
+.mat-tab-link {
+  color: red !important;
+}
+
+.mat-tab-label {
+  color: red !important;
+}
+
+.demo-tab-label {
+  color: white;
+  background-color: green;
+  data-background-color: green;
+}

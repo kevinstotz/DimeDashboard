@@ -32,6 +32,14 @@ export class Environment  {
     private LOGIN_URL: string;
     private REGISTER_URL: string;
     private REGISTER_VERIFY_URL: string;
+    private USER_INFO_URL: string;
+    private COUNTRY_LIST_URL: string;
+    private STATE_LIST_URL: string;
+    private CITY_LIST_URL: string;
+    private ZIPCODE_LIST_URL: string;
+    private DIME_PIE_CHART: string;
+    private DIME_TABLE_LIST_CHART: string;
+    private UPLOAD_FILE_URL: string;
 
     constructor() {
         this.SECURE = 'https://';
@@ -79,11 +87,18 @@ export class Environment  {
           this.COOKIE_EXPIRATION = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
         }
         if (environment.envName == 'qa') {}
-
+        this.UPLOAD_FILE_URL = this.API_URL.concat(this.API_PATH + '/account/documentupload/');
+        this.DIME_TABLE_LIST_CHART = this.API_URL.concat(this.API_PATH + '/dime/tablelistchart/');
+        this.DIME_PIE_CHART = this.API_URL.concat(this.API_PATH + '/dime/piechart/');
         this.NEWSLETTER_URL = this.API_URL.concat(this.API_PATH + '/newsletter');
         this.LOGIN_URL = this.API_URL.concat(this.API_PATH, '/o/token/');
         this.REGISTER_URL = this.API_URL.concat( this.API_PATH, '/register/');
         this.REGISTER_VERIFY_URL = this.API_URL.concat(this.API_PATH, '/register/verify/');
+        this.USER_INFO_URL = this.API_URL.concat(this.API_PATH, '/user/');
+        this.COUNTRY_LIST_URL = this.API_URL.concat(this.API_PATH, '/country/');
+        this.STATE_LIST_URL = this.API_URL.concat(this.API_PATH, '/state/');
+        this.CITY_LIST_URL = this.API_URL.concat(this.API_PATH, '/city/');
+        this.ZIPCODE_LIST_URL = this.API_URL.concat(this.API_PATH, '/zipcode/');
 
         this.global = {
             PRODUCTION:         this.PRODUCTION,
@@ -107,10 +122,18 @@ export class Environment  {
             API_HOSTNAME:         this.API_HOSTNAME,
             API_PATH:             this.API_PATH,
 
+            DIME_PIE_CHART:       this.DIME_PIE_CHART,
+            DIME_TABLE_LIST_CHART:this.DIME_TABLE_LIST_CHART,
             NEWSLETTER_URL:       this.NEWSLETTER_URL,
             LOGIN_URL:            this.LOGIN_URL,
             REGISTER_URL:         this.REGISTER_URL,
-            REGISTER_VERIFY_URL:  this.REGISTER_VERIFY_URL
+            REGISTER_VERIFY_URL:  this.REGISTER_VERIFY_URL,
+            USER_INFO_URL:        this.USER_INFO_URL,
+            COUNTRY_LIST_URL:     this.COUNTRY_LIST_URL,
+            STATE_LIST_URL:       this.STATE_LIST_URL,
+            CITY_LIST_URL:        this.CITY_LIST_URL,
+            ZIPCODE_LIST_URL:     this.ZIPCODE_LIST_URL,
+            UPLOAD_FILE_URL:      this.UPLOAD_FILE_URL
         }
     }
 }

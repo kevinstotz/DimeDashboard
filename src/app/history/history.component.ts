@@ -3,12 +3,12 @@ import { User } from '../_models/index';
 import { UserService } from '../_services/index';
 
 @Component({
-    selector: 'app-dashboard',
+    selector: 'app-history',
     moduleId: 'module.id',
-    templateUrl:'./dashboard.component.html'
+    templateUrl:'./history.component.html'
 })
 
-export class DashboardComponent implements OnInit {
+export class HistoryComponent implements OnInit {
     currentUser: User;
     users: User[] = [];
 
@@ -17,14 +17,7 @@ export class DashboardComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.loadAllUsers();
+
     }
 
-    deleteUser(id: number) {
-        this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
-    }
-
-    private loadAllUsers() {
-        this.userService.getAll().subscribe(users => { this.users = users; });
-    }
 }

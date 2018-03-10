@@ -1,7 +1,7 @@
 ﻿import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
 import { Environment } from '../environments/index';
 import { Authentication, Oauth2 } from '../_models/index';
 import { CookieService, CookieOptions } from 'ngx-cookie';
@@ -23,6 +23,11 @@ export class AuthenticationService implements OnInit {
     }
 
     ngOnInit() {
+
+    }
+
+    authentication() {
+
 
     }
 
@@ -50,9 +55,16 @@ export class AuthenticationService implements OnInit {
     logout() {
         // remove user from local storage to log user out
         this.loggedin = false;
+        localStorage.removeItem('Id');
+        sessionStorage.removeItem('Id');
+        this.cookieService.remove('Id', this.cookieOptions);
         localStorage.removeItem('currentUser');
         sessionStorage.removeItem('currentUser');
         this.cookieService.remove('currentUser', this.cookieOptions);
+    }
+
+    getCurrentUserId() {
+        return this.cookieService.get('Id');
     }
 
     isLoggedIn() {

@@ -1,0 +1,32 @@
+<div class="card">
+    <div class="card-header" data-background-color="orange">
+        <h4 class="title">Currency Composition</h4>
+        <p class="category"></p>
+    </div>
+    <div class="card-content table-responsive">
+        <table class="table table-hover">
+            <thead class="text-warning">
+                <th>Rank</th>
+                <th>Name (SYM)</th>
+                <th>Rebalance Price</th>
+                <th>Current price</th>
+                <th>Change</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let coin of dimeTableListChart">
+                    <td>{{coin.rank}}</td>
+                    <td>{{coin.currency.name}} ({{coin.currency.symbol}})</td>
+                    <td>{{coin.rebalance_price | currency: 'USD': "symbol": '1.2-2'}}</td>
+                    <td><div *ngIf="coin.rebalance_price > coin.end_price; then thenPriceBlock else elsePriceBlock"></div>
+                      <ng-template #thenPriceBlock><span class="text-danger"> {{coin.end_price | currency: 'USD': "symbol": '1.2-2'}}</span></ng-template>
+                      <ng-template #elsePriceBlock><span class="text-success"> {{coin.end_price | currency: 'USD': "symbol": '1.2-2'}}</span></ng-template>
+                    </td>
+                    <td><div *ngIf="coin.rebalance_price > coin.end_price; then thenChangeBlock else elseChangeBlock"></div>
+                      <ng-template #thenChangeBlock><span class="text-danger">-{{ coin.rebalance_price | division: coin.end_price | number : '1.2-2'}}<i class="material-icons">trending_down</i></span></ng-template>
+                      <ng-template #elseChangeBlock><span class="text-success">{{ coin.rebalance_price | division: coin.end_price | number : '1.2-2'}}%<i class="material-icons">trending_up</i></span></ng-template>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+ul#menu li {
+  display: inline;
+
+}
+.onecoin {
+  width: 10%;
+  padding: 10px 0px 20px 0px;
+}
+.cointext {
+  padding: 0px 30px 20px 0px;
+  width: 10%;
+  text-align: left;
+}
+.mat-divider {
+    color: red;
+    position: absolute;
+    width: 100%;
+}
+.BTC {
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-image: url('/assets/images/coins/BTC-30x30.png');
+}
+.ETH {
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-image: url('/assets/images/coins/ETH-30x30.png');
+}
+.ADA {
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-image: url('/assets/images/coins/ADA-30x30.png');
+}
+.BCH {
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-image: url('/assets/images/coins/BCH-30x30.png');
+}
+.DASH {
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-image: url('/assets/images/coins/DASH-30x30.png');
+}
+.LTC {
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-image: url('/assets/images/coins/LTC-30x30.png');
+}
+.MIOTA {
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-image: url('/assets/images/coins/MIOTA-30x30.png');
+}
+.XEM {
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-image: url('/assets/images/coins/XEM-30x30.png');
+}
+.XMR {
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-image: url('/assets/images/coins/XMR-30x30.png');
+}
+.XRP {
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-image: url('/assets/images/coins/XRP-30x30.png');
+}
+.EOS {
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-image: url('/assets/images/coins/EOS-30x30.png');
+}
+.XLM {
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-image: url('/assets/images/coins/XLM-30x30.png');
+}
+.NEO {
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-image: url('/assets/images/coins/NEO-30x30.png');
+}
