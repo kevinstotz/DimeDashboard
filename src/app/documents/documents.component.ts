@@ -26,7 +26,7 @@ export class DocumentsComponent implements OnInit {
 
   uploadFileToActivity(fileToUpload) {
     this.fileUploadService.postFile(fileToUpload).subscribe(data => {
-      console.log(data);
+        console.log(data);
       }, error => {
         console.log(error);
       });
