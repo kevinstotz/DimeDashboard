@@ -7,7 +7,7 @@ import { CookieModule, CookieService } from 'ngx-cookie';
 import { FormsModule, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatListModule } from '@angular/material/list';
-import { MatTableModule, MatSelectModule, MatOptionModule, MatDialogModule } from '@angular/material';
+import { MatTableModule, MatDialogModule, MatOptionModule,  MatSelectModule} from '@angular/material';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule, MatSlideToggleModule, MatButtonModule, MatFormFieldModule } from '@angular/material';
 import { MatDividerModule } from '@angular/material/divider';

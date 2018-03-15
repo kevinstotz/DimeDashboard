@@ -3,7 +3,8 @@ import { Environment } from '../environments/index';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable }   from 'rxjs/Observable';
 import { AuthenticationService } from '../_services/authentication.service';
-import { GenericResponse} from '../_models/index';
+import { GenericResponse, Document, DocumentType} from '../_models/index';
+import { MatOptionModule, MatSelectModule } from '@angular/material';
 
 @Injectable()
 export class FileUploadService {
@@ -23,6 +24,20 @@ export class FileUploadService {
 
       if (id && id.userId && id.userId > 0) {
         return this.http.post<GenericResponse>(this.environment.api.UPLOAD_FILE_URL, fileUpload, this.httpOptions);
+      }
+  }
+  getDocumentTypes() {
+      let id = JSON.parse(this.authenticationService.getCurrentUserId());
+
+      if (id && id.userId && id.userId > 0) {
+        return this.http.get<DocumentType[]>(this.environment.api.DOCUMENT_TYPES_URL, this.httpOptions);
+      }
+  }
+  getDocuments() {
+      let id = JSON.parse(this.authenticationService.getCurrentUserId());
+
+      if (id && id.userId && id.userId > 0) {
+        return this.http.get<Document[]>(this.environment.api.DOCUMENT_URL, this.httpOptions);
       }
   }
 

@@ -11,8 +11,8 @@ import { FormsModule, FormControl, FormGroup, FormBuilder, Validators, NgForm } 
 })
 export class ProfileComponent implements OnInit {
   private userProfileForm: FormGroup;
-  private isLoading: boolean;
-  private profile: Profile;
+  private isLoading: boolean = false;
+  private profile: Profile = new Profile();
   private selectedCountry: Country = new Country(231, 'USofA', 'USA', 1);
   private selectedState: State = new State(3923, 'Puerto Rico', 'PR');
   private selectedCity: City = new City(4, 'Aguada');
@@ -26,8 +26,7 @@ export class ProfileComponent implements OnInit {
               private stateListService: StateListService,
               private cityListService: CityListService,
               private formBuilder: FormBuilder)  {
-    this.isLoading = false;
-    this.profile = new Profile();
+
   }
 
   ngOnInit() {

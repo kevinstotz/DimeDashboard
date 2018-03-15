@@ -40,6 +40,8 @@ export class Environment  {
     private DIME_PIE_CHART: string;
     private DIME_TABLE_LIST_CHART: string;
     private UPLOAD_FILE_URL: string;
+    private DOCUMENT_TYPES_URL: string;
+    private DOCUMENTS_URL: string;
 
     constructor() {
         this.SECURE = 'https://';
@@ -87,6 +89,8 @@ export class Environment  {
           this.COOKIE_EXPIRATION = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
         }
         if (environment.envName == 'qa') {}
+        this.DOCUMENT_TYPES_URL = this.API_URL.concat(this.API_PATH + '/account/documenttypes/');
+        this.DOCUMENTS_URL = this.API_URL.concat(this.API_PATH + '/account/documents/');
         this.UPLOAD_FILE_URL = this.API_URL.concat(this.API_PATH + '/account/documentupload/');
         this.DIME_TABLE_LIST_CHART = this.API_URL.concat(this.API_PATH + '/dime/tablelistchart/');
         this.DIME_PIE_CHART = this.API_URL.concat(this.API_PATH + '/dime/piechart/');
@@ -133,7 +137,10 @@ export class Environment  {
             STATE_LIST_URL:       this.STATE_LIST_URL,
             CITY_LIST_URL:        this.CITY_LIST_URL,
             ZIPCODE_LIST_URL:     this.ZIPCODE_LIST_URL,
-            UPLOAD_FILE_URL:      this.UPLOAD_FILE_URL
+            UPLOAD_FILE_URL:      this.UPLOAD_FILE_URL,
+            DOCUMENT_TYPES_URL:   this.DOCUMENT_TYPES_URL,
+            DOCUMENTS_URL:        this.DOCUMENTS_URL
+
         }
     }
 }
