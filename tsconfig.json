@@ -1,8 +1,8 @@
 ﻿{
   "compilerOptions": {
-    "baseUrl": "C:/Users/kevin/OneDrive/Work/software/dime/DimeDashboard/node_modules/",
+    "baseUrl": "./node_modules/",
     "declaration": false,
-    "outDir": "../dist/out-tsc",
+    "outDir": "./dist/out-tsc",
     "rootDir": "",
     "paths": {
       "*": ["./*"]
@@ -23,7 +23,7 @@
     "target": "es6"
   },
 
-  "include": ["../node_modules/angular-bootstrap-md/**/*.ts",  "../src/**/*.ts"],
+  "include": ["./node_modules/angular-bootstrap-md/**/*.ts",  "../src/**/*.ts"],
   "compileOnSave": true,
   "buildOnSave": true
 }
