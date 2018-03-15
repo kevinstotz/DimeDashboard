@@ -110,7 +110,7 @@ module.exports = {
         // your Angular Async Route paths relative to this root directory
       }
     ),
-    new TsConfigPathsPlugin({ configFileName: 'tsconfig.json', compiler : 'typescript'} ),
+    new TsConfigPathsPlugin({ tsconfig: __dirname + '/src/tsconfig.json', compiler : 'typescript'} ),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: true }),
   ],

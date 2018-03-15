@@ -4,7 +4,6 @@ import { AppRoutingModule }        from './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from  '@angular/platform-browser/animations';
 import { CookieModule, CookieService } from 'ngx-cookie';
-import { DeviceDetectorModule } from 'ngx-device-detector';
 import { FormsModule, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatListModule } from '@angular/material/list';
