@@ -41,7 +41,7 @@ export class DocumentsComponent implements OnInit {
       this.documentForm = this.formBuilder.group({
           fileType : [{value: null, disabled: false}, []],
           fileObject : [{value: null, disabled: false}, []],
-      }
+      });
   }
 
   documentUpload(documentForm) {
