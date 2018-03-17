@@ -1,9 +1,9 @@
 <div class="main-panel">
   <app-topmaincontent></app-topmaincontent>
     <div class="content">
-      <div class="container-fluid">
+      <div class="container">
         <div class="row">
-              <div class="col-lg-12 col-md-12">
+              <div class="col-sm-12">
                   <div class="card">
                     <div class="card-header" data-background-color="green">
                         <h4 class="title">Documents</h4>
@@ -11,65 +11,67 @@
                     </div>
                       <div class="card-content">
 
-                        <table class="table">
-                                <tr width="100%">
-                                  <form width="100%" [formGroup]="documentForm" name="documentForm" (ngSubmit)="documentUpload(documentForm)">
-                                    <td class="text-left" width="200px">
+                        <div class="container">
+                                <div class="row">
+                                  <form [formGroup]="documentForm" name="documentForm" (ngSubmit)="documentUpload(documentForm)">
+                                    <div class="col-sm-3">
 
-                                        <label for="singleFile" class="md-button md-raised md-primary"><i class="material-icons">file_upload</i></label>
-                                        <input id="singleFile"
+                                        <label for="singleFile" class="btn btn-info">Select a Document</label>
+                                        <input
+                                            id="singleFile"
+                                            name="singleFile"
+                                            #singleFile
                                             type="file"
                                             formControlName="fileObject"
                                             style="display: none;"
-                                            onchange="file_path_display.innerHTML=singleFile.value"
+                                            onchange="file_path_display.innerHTML=singleFile.value;"
                                             (change)="handleFileSelect($event.target.files);"/>
                                         <div id="file_path_display"></div>
 
-                                    </td>
+                                    </div>
 
-                                    <td class="text-left">
+                                    <div class="col-sm-3">
 
-                                        <mat-form-field>
-                                          <mat-select placeholder="Select Document Type" formControlName="fileType">
-                                            <mat-option *ngFor="let documentType of documentTypes" [value]="documentType.id">
-                                              {{ documentType.type }}
-                                            </mat-option>
-                                          </mat-select>
-                                        </mat-form-field>
+                                      <mat-form-field>
+                                        <mat-select placeholder="Select Document Type" formControlName="fileType">
+                                          <mat-option value="0" selected disabled>Select</mat-option>
+                                          <mat-option *ngFor="let documentType of documentTypes" [value]="documentType.id">
+                                            {{ documentType.type }}
+                                          </mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
 
-                                    </td>
+                                    </div>
 
-                                    <td class="text-right">
-                                      <button class="pull-right btn btn-info">Upload</button>
-                                    </td>
-                                    <td class="text-right" colspan="2"  width="600px">
-                                        <alert></alert>
-                                    </td>
+                                    <div class="col-sm-3">
+                                      <alert></alert>
+                                    </div>
+                                    <div class="col-sm-3">
+                                      <button class=" btn btn-info">Upload</button>
+                                    </div>
+
                                   </form>
-                                </tr>
 
-                                <tr>
-                                    <td class="text-center" colspan="4">Your Documents</td>
-                                </tr>
+                                </div>
+<hr>
 
-                                <tr *ngFor="let document of documents">
-                                    <td class="text-left">{{ document.name }}</td>
-                                    <td class="text-left">{{document.type.type}}</td>
-                                    <td class="text-left">
-                                        {{document.status.status}}
-                                    </td>
-                                    <td class="text-right">
-                                      <a href="{{document.document}}" target="_blank" rel="tooltip" title="View" class="btn btn-primary btn-simple btn-xs">
-                                          <i class="material-icons">picture_as_pdf</i>
-                                      </a>
-                                      <button type="button" (click)="documentDelete(document.id)" rel="tooltip" id={{document.id}} title="Delete" class="btn btn-danger btn-simple btn-xs">
-                                          <i class="material-icons">delete</i>
-                                      </button>
-                                    </td>
-                                </tr>
 
-                            </tbody>
-                        </table>
+                                  <div class="row" *ngFor="let document of documents">
+                                      <div class="text-left col-sm-3"><a href="{{document.document}}" target="_blank" rel="tooltip" title="View">{{document.type.type}}</a></div>
+                                      <div class="text-left col-sm-3">
+                                          {{document.status.status}}
+                                      </div>
+                                      <div class="text-left col-sm-3">
+                                      </div>
+                                      <div class="col-sm-3">
+                                          <button type="button" (click)="documentDelete(document.id)" rel="tooltip" id={{document.id}} title="Delete" class="btn btn-danger btn-simple btn-xs">
+                                              <i class="material-icons">delete</i>
+                                          </button>
+                                      </div>
+                                    </div>
+
+
+                        </div>
                       </div>
                   </div>
                 </div>

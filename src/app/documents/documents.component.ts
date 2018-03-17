@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild  } from '@angular/core';
 import { FileUploadService, AlertService } from '../_services/index';
 import { Document, DocumentType } from '../_models/index';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, FormControl, FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { isNumeric } from 'rxjs/util/isNumeric';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { WebcamImage } from 'ngx-webcam';
+
 
 @Component({
   selector: 'app-documents',
@@ -11,6 +15,7 @@ import { isNumeric } from 'rxjs/util/isNumeric';
   styleUrls: ['./documents.component.css']
 })
 export class DocumentsComponent implements OnInit {
+  @ViewChild("singleFile") fileInputVariable: any;
   private documents: Document[] = new Array();
   private documentForm: FormGroup;
   private documentTypes: DocumentType[] = new Array();
@@ -33,8 +38,8 @@ export class DocumentsComponent implements OnInit {
 
   ngOnInit() {
       this.documentForm = this.formBuilder.group({
-          fileType : [{value: "", disabled: false}, []],
-          fileObject : [{value: null, disabled: false}, []],
+          fileType : [{value: "", disabled: false}, [ Validators.required ]],
+          fileObject : [{value: null, disabled: false}, [ Validators.required ]],
       });
   }
 
@@ -46,12 +51,12 @@ export class DocumentsComponent implements OnInit {
       });
   }
   documentUpload(documentForm) {
-    if ( this.documentForm.controls.fileObject == null) {
-      this.alertService.error("Select a Document");
+    if ( this.fileInputVariable.nativeElement.files.length <= 0 ) {
+      this.alertService.info("Select a Document");
       return;
     }
-    if ( !isNumeric(this.documentForm.controls.fileType.value)) {
-      this.alertService.error("Select a Document Type");
+    if ( this.documentForm.controls.fileType.value == 0) {
+      this.alertService.info("Select a Document Type");
       return;
     }
 
@@ -80,4 +85,28 @@ export class DocumentsComponent implements OnInit {
         console.log(error);
       });
   }
+  public showWebcam = true;
+
+// latest snapshot
+public webcamImage: WebcamImage = null;
+
+// webcam snapshot trigger
+private trigger: Subject<void> = new Subject<void>();
+
+public triggerSnapshot(): void {
+  this.trigger.next();
+}
+
+public toggleWebcam(): void {
+  this.showWebcam = !this.showWebcam;
+}
+
+public handleImage(webcamImage: WebcamImage): void {
+  console.info('received webcam image', webcamImage);
+  this.webcamImage = webcamImage;
+}
+
+public get triggerObservable(): Observable<void> {
+  return this.trigger.asObservable();
+}
 }

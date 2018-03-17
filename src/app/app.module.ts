@@ -15,7 +15,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PageErrorsModule }  from './modules/page-errors/index';
-
+import { WebcamModule } from 'ngx-webcam';
 import {} from 'jasmine';
 
 import { AuthGuard } from './_guards/index';
@@ -65,7 +65,8 @@ import { DimetableComponent } from './dimetable/dimetable.component';
         MatTooltipModule,
         MDBBootstrapModule.forRoot(),
         PageErrorsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        WebcamModule
     ],
     exports: [
         CommonModule,
