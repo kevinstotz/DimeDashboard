@@ -91,7 +91,6 @@ export class DocumentsComponent implements OnInit {
     this.fileUploadService.postFile(fileToUpload, fileType).subscribe(data => {
         this.filePathDisplayDiv.nativeElement.innerHTML ="";
         this.documentForm.controls['fileType'].setValue(0, {onlySelf: true});
-        this.documentForm.reset();
         this.alertService.clear();
         this.buttonDisabled = false;
         this.getDocuments();
