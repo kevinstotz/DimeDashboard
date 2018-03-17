@@ -54,11 +54,13 @@ export class DocumentsComponent implements OnInit {
       });
   }
   documentUpload(documentForm) {
+    console.log(this.fileInputVariable.nativeElement.files.length);
+
     if (this.fileInputVariable.nativeElement.files.length <= 0 ) {
       this.alertService.info("Select a Document");
       return;
     }
-    this.alertService.info("");
+
     if ( this.documentForm.controls.fileType.value == 0) {
       this.alertService.info("Select a Document Type");
       return;
@@ -89,7 +91,8 @@ export class DocumentsComponent implements OnInit {
   uploadFileToActivity(fileToUpload, fileType) {
 
     this.fileUploadService.postFile(fileToUpload, fileType).subscribe(data => {
-        this.filePathDisplayDiv.nativeElement.innerHTML ="";
+        this.filePathDisplayDiv.nativeElement.innerHTML = "";
+        this.fileInputVariable.nativeElement.value = "";
         this.documentForm.controls['fileType'].setValue(0, {onlySelf: true});
         this.alertService.clear();
         this.buttonDisabled = false;
