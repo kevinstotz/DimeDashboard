@@ -4,12 +4,19 @@ export class FileUpload {
   type: string;
 }
 export class DocumentType {
-  type: string;
   id: number;
+  type: string;
+}
+export class DocumentStatus {
+  id: number;
+  status: string;
 }
 export class Document {
+  document: string;
   id: number;
+  inserted: string;
   name: string;
-  type: object;
-  status: object;
+  size: number;
+  type: DocumentType;
+  status: DocumentStatus;
 }

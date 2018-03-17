@@ -41,7 +41,8 @@ export class Environment  {
     private DIME_TABLE_LIST_CHART: string;
     private UPLOAD_FILE_URL: string;
     private DOCUMENT_TYPES_URL: string;
-    private DOCUMENTS_URL: string;
+    private GET_DOCUMENTS_URL: string;
+    private DOCUMENT_DELETE_URL: string;
 
     constructor() {
         this.SECURE = 'https://';
@@ -90,7 +91,8 @@ export class Environment  {
         }
         if (environment.envName == 'qa') {}
         this.DOCUMENT_TYPES_URL = this.API_URL.concat(this.API_PATH + '/account/documenttypes/');
-        this.DOCUMENTS_URL = this.API_URL.concat(this.API_PATH + '/account/documents/');
+        this.DOCUMENT_DELETE_URL = this.API_URL.concat(this.API_PATH + '/account/document/');
+        this.GET_DOCUMENTS_URL = this.API_URL.concat(this.API_PATH + '/account/documents/');
         this.UPLOAD_FILE_URL = this.API_URL.concat(this.API_PATH + '/account/documentupload/');
         this.DIME_TABLE_LIST_CHART = this.API_URL.concat(this.API_PATH + '/dime/tablelistchart/');
         this.DIME_PIE_CHART = this.API_URL.concat(this.API_PATH + '/dime/piechart/');
@@ -139,8 +141,8 @@ export class Environment  {
             ZIPCODE_LIST_URL:     this.ZIPCODE_LIST_URL,
             UPLOAD_FILE_URL:      this.UPLOAD_FILE_URL,
             DOCUMENT_TYPES_URL:   this.DOCUMENT_TYPES_URL,
-            DOCUMENTS_URL:        this.DOCUMENTS_URL
-
+            GET_DOCUMENTS_URL:    this.GET_DOCUMENTS_URL,
+            DOCUMENT_DELETE_URL:  this.DOCUMENT_DELETE_URL
         }
     }
 }

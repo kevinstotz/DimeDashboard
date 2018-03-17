@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from  '@angular/platform-browser/animations';
 import { CookieModule, CookieService } from 'ngx-cookie';
 import { FormsModule, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatFileUploadModule } from 'angular-material-fileupload';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule, MatDialogModule, MatOptionModule,  MatSelectModule} from '@angular/material';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -52,6 +53,7 @@ import { DimetableComponent } from './dimetable/dimetable.component';
         MatButtonModule,
         MatDialogModule,
         MatDividerModule,
+        MatFileUploadModule,
         MatFormFieldModule,
         MatInputModule,
         MatListModule,

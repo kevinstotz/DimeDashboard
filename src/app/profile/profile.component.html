@@ -18,7 +18,7 @@
                                          <div class="form-group">
                                              <mat-form-field>
                                                  <mat-label>Company</mat-label>
-                                             <input matInput type="text" class="form-control" formControlName="company">
+                                             <input matInput type="text" formControlName="company">
                                             </mat-form-field>
                                          </div>
                                      </div>
@@ -27,7 +27,7 @@
                                          <div class="form-group">
                                              <mat-form-field>
                                                  <mat-label>Email</mat-label>
-                                             <input matInput type="text" class="form-control" formControlName="email">
+                                             <input matInput type="text" formControlName="email">
                                             </mat-form-field>
                                          </div>
                                      </div>
@@ -42,7 +42,7 @@
                                      <div class="form-group">
                                         <mat-form-field>
                                           <mat-label>First Name</mat-label>
-                                          <input matInput type="text" class="form-control"  formControlName="firstName" >
+                                          <input matInput type="text" formControlName="firstName" >
                                        </mat-form-field>
                                      </div>
                                    </div>
@@ -50,7 +50,7 @@
                                      <div class="form-group">
                                         <mat-form-field>
                                           <mat-label>Last Name</mat-label>
-                                          <input matInput type="text" class="form-control" formControlName="lastName" >
+                                          <input matInput type="text" formControlName="lastName" >
                                        </mat-form-field>
                                      </div>
                                    </div>
@@ -59,7 +59,7 @@
                                      <div class="form-group">
                                         <mat-form-field>
                                           <mat-label>Phone</mat-label>
-                                          <input matInput type="text" class="form-control" formControlName="phoneNumber" >
+                                          <input matInput type="text" formControlName="phoneNumber" >
                                        </mat-form-field>
                                      </div>
                                    </div>
@@ -70,7 +70,7 @@
                                        <div class="form-group">
                                           <mat-form-field>
                                             <mat-label>Address</mat-label>
-                                            <input matInput type="text" class="form-control" formControlName="address1" >
+                                            <input matInput type="text" formControlName="address1" >
                                          </mat-form-field>
                                        </div>
                                      </div>
@@ -80,7 +80,7 @@
                                          <div class="form-group">
                                             <mat-form-field>
                                               <mat-label class="control-label">City</mat-label>
-                                              <mat-select formControlName="city" class="form-control"  [(ngModel)]="selectedCity.name">
+                                              <mat-select formControlName="city" [(ngModel)]="selectedCity.name">
                                                   <mat-option *ngFor="let city of cities" [value]="city">
                                                     {{city.name}}
                                                   </mat-option>
@@ -93,7 +93,7 @@
                                           <div class="form-group">
                                              <mat-form-field>
                                                <mat-label>State</mat-label>
-                                                   <mat-select formControlName="state" class="form-control" [(ngModel)]="selectedState.name">
+                                                   <mat-select formControlName="state" [(ngModel)]="selectedState.name">
                                                      <mat-option *ngFor="let state of states" [value]="state">
                                                        {{state.name}}
                                                      </mat-option>
@@ -106,7 +106,7 @@
                                            <div class="form-group">
                                              <mat-form-field>
                                                <mat-label>Country</mat-label>
-                                                   <mat-select formControlName="country" class="form-control" [(ngModel)]="selectedCountry" >
+                                                   <mat-select formControlName="country" [(ngModel)]="selectedCountry" >
                                                      <mat-option *ngFor="let country of countries" [value]="country">
                                                        {{country.name}}
                                                      </mat-option>
@@ -119,7 +119,7 @@
                                          <div class="form-group">
                                             <mat-form-field>
                                               <mat-label>Postal Code</mat-label>
-                                              <input matInput type="text" class="form-control"  formControlName="zipcode" >
+                                              <input matInput type="text" formControlName="zipcode" >
                                            </mat-form-field>
                                          </div>
                                        </div>
@@ -129,7 +129,7 @@
                                          <div class="form-group">
                                            <mat-form-field>
                                              <mat-label>About Me</mat-label>
-                                             <input matInput type="text" class="form-control" formControlName="about" >
+                                             <input matInput type="text" formControlName="about" >
                                           </mat-form-field>
                                          </div>
                                      </div>
