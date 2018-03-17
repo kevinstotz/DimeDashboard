@@ -16,11 +16,14 @@ import { WebcamImage } from 'ngx-webcam';
 })
 export class DocumentsComponent implements OnInit {
   @ViewChild("singleFile") fileInputVariable: any;
+  @ViewChild("file_path_display") filePathDisplayDiv: any;
+
   private documents: Document[] = new Array();
   private documentForm: FormGroup;
   private documentTypes: DocumentType[] = new Array();
   private fileToUpload: File = null;
   private userProfileForm: FormGroup;
+  private buttonDisabled: boolean = false;
   private isLoading: boolean = false;
   private document: Document = new Document();
 
@@ -51,15 +54,17 @@ export class DocumentsComponent implements OnInit {
       });
   }
   documentUpload(documentForm) {
-    if ( this.fileInputVariable.nativeElement.files.length <= 0 ) {
+    if (this.fileInputVariable.nativeElement.files.length <= 0 ) {
       this.alertService.info("Select a Document");
       return;
     }
+    this.alertService.info("");
     if ( this.documentForm.controls.fileType.value == 0) {
       this.alertService.info("Select a Document Type");
       return;
     }
-
+    this.alertService.clear();
+    this.buttonDisabled = true;
     this.uploadFileToActivity(this.fileToUpload, documentForm.controls.fileType.value);
   }
 
@@ -73,15 +78,25 @@ export class DocumentsComponent implements OnInit {
 
   handleFileSelect(files: FileList) {
       this.fileToUpload = files.item(0);
+      this.alertService.clear();
+      return;
+  }
+  handleDocumentTypeSelect(files: FileList) {
+      this.alertService.clear();
       return;
   }
 
   uploadFileToActivity(fileToUpload, fileType) {
+
     this.fileUploadService.postFile(fileToUpload, fileType).subscribe(data => {
-      this.documentForm.controls.fileObject = null;
-      this.documentForm.controls.fileType = null;
+        this.filePathDisplayDiv.nativeElement.innerHTML ="";
+        this.documentForm.controls['fileType'].setValue(0, {onlySelf: true});
+        this.documentForm.reset();
+        this.alertService.clear();
+        this.buttonDisabled = false;
         this.getDocuments();
       }, error => {
+        this.buttonDisabled = false;
         console.log(error);
       });
   }

@@ -26,14 +26,14 @@
                                             style="display: none;"
                                             onchange="file_path_display.innerHTML=singleFile.value;"
                                             (change)="handleFileSelect($event.target.files);"/>
-                                        <div id="file_path_display"></div>
+                                        <div #file_path_display id="file_path_display"></div>
 
                                     </div>
 
                                     <div class="col-sm-3">
 
                                       <mat-form-field>
-                                        <mat-select placeholder="Select Document Type" formControlName="fileType">
+                                        <mat-select (change)="handleDocumentTypeSelect($event);" placeholder="Select Document Type" formControlName="fileType">
                                           <mat-option value="0" selected disabled>Select</mat-option>
                                           <mat-option *ngFor="let documentType of documentTypes" [value]="documentType.id">
                                             {{ documentType.type }}
@@ -47,7 +47,7 @@
                                       <alert></alert>
                                     </div>
                                     <div class="col-sm-3">
-                                      <button class=" btn btn-info">Upload</button>
+                                      <button [disabled]="buttonDisabled" class=" btn btn-info">Upload</button>
                                     </div>
 
                                   </form>
