@@ -2,10 +2,9 @@
 import { Environment } from '../environments/index';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable }   from 'rxjs/Observable';
-import { User } from '../_models/index';
+import { User, GenericResponse, Profile  } from '../_models/index';
 import { AuthenticationService } from '../_services/authentication.service';
 import 'rxjs/add/operator/map';
-import { GenericResponse, Profile } from '../_models/index';
 
 
 @Injectable()

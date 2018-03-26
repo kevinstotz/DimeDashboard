@@ -1,0 +1,115 @@
+
+
+<div class="main-panel">
+  <app-topmaincontent></app-topmaincontent>
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header" data-background-color="green">
+                <h4 class="title">Checkout</h4>
+                <p class="category"></p>
+            </div>
+            <div class="card-content">
+              <mat-accordion class="example-headers-align">
+                <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      PayPal
+                    </mat-panel-title>
+                    <mat-panel-description class="card-description">
+                      <div *ngIf="paypalPaymentMessage.id==1"><img src="/assets/images/checkout/loading.gif">{{paypalPaymentMessage.status}}</div>
+                      <div *ngIf="paypalPaymentMessage.id==0">{{paypalPaymentMessage.status}}</div>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <app-paypal
+                        (paymentStatus)="paypalPaymentStatus($event)"
+                        [buttonText]="'Submit Investment'">
+                      </app-paypal>
+                    </div>
+                    <div class="col-sm-9">
+                    </div>
+                  </div>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Credit Card
+                    </mat-panel-title>
+                    <mat-panel-description class="card-description">
+                      <div *ngIf="visaMCPaymentMessage.id==1"><img src="/assets/images/checkout/loading.gif">{{visaMCPaymentMessage.status}}</div>
+                      <div *ngIf="visaMCPaymentMessage.id==0">{{visaMCPaymentMessage.status}}</div>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                <app-visamastercard (paymentStatus)="visaMCPaymentStatus($event)"></app-visamastercard>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      BitCoin
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Checkout with BitCoin
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <a href="https://commerce.coinbase.com/checkout/bcbc0ce3-984d-4be6-bd71-7c9e64a4df51">
+                    <img src="assets/images/checkout/bitcoin.png" /></a>
+                  <script src="https://commerce.coinbase.com/v1/checkout.js"></script>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle="true">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      LiteCoin
+                    </mat-panel-title>
+                    <mat-panel-description class="card-description">
+                      Checkout with LiteCoin
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <a href="https://commerce.coinbase.com/checkout/bcbc0ce3-984d-4be6-bd71-7c9e64a4df51">
+                    <img src="assets/images/checkout/litecoin.jpg" /></a>
+                  <script src="https://commerce.coinbase.com/v1/checkout.js"></script>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle="true">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Bitcoin Cash
+                    </mat-panel-title>
+                    <mat-panel-description class="card-description">
+                      Checkout with Bitcoin Cash
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <a href="https://commerce.coinbase.com/checkout/bcbc0ce3-984d-4be6-bd71-7c9e64a4df51">
+                    <img src="assets/images/checkout/litecoin.jpg" /></a>
+                  <script src="https://commerce.coinbase.com/v1/checkout.js"></script>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5)" hideToggle="true">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                     Ethereum
+                    </mat-panel-title>
+                    <mat-panel-description class="card-description">
+                      Checkout with Ethereum
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <a href="https://commerce.coinbase.com/checkout/bcbc0ce3-984d-4be6-bd71-7c9e64a4df51">
+                    <img src="assets/images/checkout/litecoin.jpg" /></a>
+                  <script src="https://commerce.coinbase.com/v1/checkout.js"></script>
+                </mat-expansion-panel>
+
+              </mat-accordion>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

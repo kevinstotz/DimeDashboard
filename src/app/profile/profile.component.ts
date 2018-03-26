@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Profile, Country, State, City, ZipCode } from '../_models/index';
 import { UserService, AuthenticationService, AlertService, CountryListService, StateListService, CityListService } from '../_services/index';
 import { FormsModule, FormControl, FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class ProfileComponent implements OnInit {
   private userProfileForm: FormGroup;
   private isLoading: boolean = false;
   private profile: Profile = new Profile();
-  private selectedCountry: Country = new Country(231, 'USofA', 'USA', 1);
+  private selectedCountry: Country = new Country(232, 'USofA', 'USA', 1);
   private selectedState: State = new State(3923, 'Puerto Rico', 'PR');
   private selectedCity: City = new City(4, 'Aguada');
   private countries: Country[] = [];
@@ -34,33 +35,23 @@ export class ProfileComponent implements OnInit {
     this.isLoading = true;
 
     this.userProfileForm = this.formBuilder.group({
-        email : [{value: null, disabled: false}, []],
-        company : [{value: null, disabled: false}, []],
-        firstName : [{value: null, disabled: false}, []],
-        lastName : [{value: null, disabled: false}, []],
-        address1 : [{value: null, disabled: false}, []],
-        address2 : [{value: null, disabled: false}, []],
-        address3 : [{value: null, disabled: false}, []],
-        phoneNumber : [{value: null, disabled: false}, []],
-        avatar : [{value: null, disabled: false}, []],
-        city : [{value: null, disabled: false}, []],
-        state : [{value: null, disabled: false}, []],
-        country : [{value: null, disabled: false}, []],
-        zipcode : [{value: null, disabled: false}, []],
+        email : [{value: null, disabled: true}, []],
+        company : [{value: null, disabled: true}, []],
+        firstName : [{value: null, disabled: true}, []],
+        lastName : [{value: null, disabled: true}, []],
+        address1 : [{value: null, disabled: true}, []],
+        address2 : [{value: null, disabled: true}, []],
+        address3 : [{value: null, disabled: true}, []],
+        phoneNumber : [{value: null, disabled: true}, []],
+        avatar : [{value: null, disabled: true}, []],
+        city : [{value: null, disabled: true}, []],
+        state : [{value: null, disabled: true}, []],
+        country : [{value: null, disabled: true}, []],
+        zipcode : [{value: null, disabled: true}, []],
+        birth_date : [{value: null, disabled: true}, []],
         about : ['', [
             Validators.minLength(0)
         ]],
-    });
-
-    this.countryListService.getAll()
-    .subscribe(
-       (data : Country[]) => {
-          data.forEach( (country, index) => {
-            this.countries[index] = new Country(country['id'], country['name'], country['sort_name'], country['phone_code']);
-          });
-        },
-        errorResponse => {
-          console.log(errorResponse);
     });
 
 
@@ -77,10 +68,12 @@ export class ProfileComponent implements OnInit {
                 this.userProfileForm.controls.about.setValue(element['about'], {onlySelf: false, emitEvent: true});
                 this.userProfileForm.controls.avatar.setValue(element['avatar'], {onlySelf: false, emitEvent: true});
                 this.selectedCountry = element['addresses'][0]['country'];
+                this.getCountries();
                 this.userProfileForm.controls.phoneNumber.setValue("+" + element['phoneNumbers'][0]['country']['phone_code'] + " " + element['phoneNumbers'][0]['phone_number']);
                 this.getStates(this.selectedCountry.id);
                 this.selectedState = element['addresses'][0]['state'];
                 this.selectedCity = element['addresses'][0]['city'];
+                this.userProfileForm.controls.birth_date.setValue(element['birth_date'], {onlySelf: false, emitEvent: true});
                 this.userProfileForm.controls.address1.setValue(element['addresses'][0]['address1'], {onlySelf: true, emitEvent: false});
                  for (var i in element['names']) {
                     if (element['names'][i]['type']['type'] == 'First') {
@@ -95,6 +88,22 @@ export class ProfileComponent implements OnInit {
          errorResponse => {
            console.log(errorResponse);
      });
+  }
+
+  getCountries() {
+      this.countryListService.getAll()
+      .subscribe(
+         (data : Country[]) => {
+            data.forEach( (country, index) => {
+              this.countries[index] = new Country(country['id'], country['name'], country['sort_name'], country['phone_code']);
+              if (country['id'] == this.selectedCountry.id) {
+                this.userProfileForm.controls.country.patchValue(this.countries.find(country => country['id'] == this.selectedCountry.id));
+              }
+            });
+          },
+          errorResponse => {
+            console.log(errorResponse);
+      });
   }
 
   getStates(countryId) {

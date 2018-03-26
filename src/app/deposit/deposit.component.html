@@ -1,4 +1,5 @@
 
+
 <div class="main-panel">
   <app-topmaincontent></app-topmaincontent>
   <div class="content">
@@ -9,49 +10,50 @@
             <div class="card-header" data-background-color="green">
                 <h4 class="title">Deposit</h4>
                 <p class="category">Fund your account</p>
-              </div>
-              <div class="card-content">
-              <mat-tab-group class="demo-tab-group">
-                <mat-tab label="Paypal" class="demo-tab-label">
-                  <div class="demo-tab-content">
-                    Paypal
-                  </div>
-                </mat-tab>
-                <mat-tab label="Venmo">
-                  <div class="demo-tab-content">
-                    venmo
-                  </div>
-                </mat-tab>
-                <mat-tab label="Visa/MC">
-                  <div class="demo-tab-content">
-                    Visa
-                  </div>
-                </mat-tab>
-                <mat-tab label="Bitcoin">
-                  <div class="demo-tab-content">
-                    <div>
-                      <a class="buy-with-crypto"
-                         href="https://commerce.coinbase.com/checkout/bcbc0ce3-984d-4be6-bd71-7c9e64a4df51">
-                        <span>Buy with Crypto</span>
-                      </a>
-                      <script src="https://commerce.coinbase.com/v1/checkout.js">
-                      </script>
-                    </div>
-                  </div>
-                </mat-tab>
-                <mat-tab label="Ether">
-                  <div class="demo-tab-content">
-                    Ether
-                  </div>
-                </mat-tab>
-                <mat-tab label="Alt Coins">
-                  <div class="demo-tab-content">
-                    Alt coins
-                  </div>
-                </mat-tab>
-              </mat-tab-group>
-
             </div>
+            <div class="card-content">
+              <p>Slide the ball to adjust the price.</p>
+              {{ min | currency:'USD':'symbol':'2.0' }}<mat-slider
+                 class="mat-slider-class"
+                 #slidey
+                 color="accent"
+                 [invert]="invert"
+                 [max]="max"
+                 [min]="min"
+                 [thumbLabel]="thumbLabel"
+                 [step]="step"
+                 [displayValue]="displayValue"
+                 [tick-interval]="tickInterval"
+                 [(ngModel)]="value"
+                 (input)="pitch($event)"
+                 [horzontal]="horizontal">
+              </mat-slider>{{ max | currency:'USD':'symbol':'2.0' }}
+              <form [formGroup]="investingRiskForm" name="investingRiskForm" #formDir="ngForm" (ngSubmit)="submitInvestingRiskForm(investingRiskForm)">
+                <span><h6>
+                  <mat-checkbox
+                    type="checkbox"
+                    formControlName="investCheckbox"
+                    class="example-margin">
+                  </mat-checkbox> I am Investing {{ value | currency: 'USD': 'symbol': '2.0' }}<div *ngIf="formDir.submitted && !investingRiskForm.get('investCheckbox').value" class="help-block">Acknowledgement is required</div></h6>
+                </span>
+                <span><h6>
+                  <mat-checkbox
+                    type="checkbox"
+                    formControlName="risksCheckbox"
+                    class="example-margin">
+                  </mat-checkbox><a href="http://www.finra.org/investors/reality-investment-risk" target="_blank"> I understand the risks, click to read.</a><div *ngIf="formDir.submitted && !investingRiskForm.get('risksCheckbox').value" class="help-block">Acknowledgement is required</div></h6>
+                </span>
+                <span><h6>
+                  <mat-checkbox
+                    type="checkbox"
+                    formControlName="noGuaranteesCheckbox"
+                    class="example-margin ">
+                  </mat-checkbox> I understand what I am doing.<div *ngIf="formDir.submitted && !investingRiskForm.get('noGuaranteesCheckbox').value" class="help-block">Acknowledgement is required</div></h6>
+                </span>
+                <span class="text-center"><button type="submit" class="btn btn-success">I Want to Invest Now</button></span>
+              </form>
+            </div>
+
           </div>
         </div>
       </div>

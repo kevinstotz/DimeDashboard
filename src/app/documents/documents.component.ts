@@ -54,8 +54,6 @@ export class DocumentsComponent implements OnInit {
       });
   }
   documentUpload(documentForm) {
-    console.log(this.fileInputVariable.nativeElement.files.length);
-
     if (this.fileInputVariable.nativeElement.files.length <= 0 ) {
       this.alertService.info("Select a Document");
       return;

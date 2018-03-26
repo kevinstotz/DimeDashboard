@@ -31,7 +31,10 @@ export class Environment  {
     private NEWSLETTER_URL: string;
     private LOGIN_URL: string;
     private REGISTER_URL: string;
+    private DASHBOARD_CHECKOUT_URL: string
+    private DASHBOARD_DEPOSIT_URL: string;
     private REGISTER_VERIFY_URL: string;
+    private HISTORY_CHART_URL: string;
     private USER_INFO_URL: string;
     private COUNTRY_LIST_URL: string;
     private STATE_LIST_URL: string;
@@ -43,6 +46,15 @@ export class Environment  {
     private DOCUMENT_TYPES_URL: string;
     private GET_DOCUMENTS_URL: string;
     private DOCUMENT_DELETE_URL: string;
+
+    private BRAINTREE_CREATE_PAYPAL_SALE_URL: string;
+    private BRAINTREE_CREATE_VISAMC_SALE_URL: string;
+    private BRAINTREE_CLIENT_TOKEN_URL: string;
+    private BRAINTREE_CLIENT_JS: string;
+    private BRAINTREE_HOSTED_FIELDS_JS: string;
+    private BRAINTREE_DATA_COLLECTOR_JS: string
+    private BRAINTREE_PAYPAL_CHECKOUT_JS: string;
+    private PAYPAL_CHECKOUT_JS: string;
 
     constructor() {
         this.SECURE = 'https://';
@@ -90,17 +102,29 @@ export class Environment  {
           this.COOKIE_EXPIRATION = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
         }
         if (environment.envName == 'qa') {}
+        this.BRAINTREE_CREATE_VISAMC_SALE_URL = this.API_URL.concat(this.API_PATH + '/deposit/braintree/visamc/sale/');
+        this.BRAINTREE_CREATE_PAYPAL_SALE_URL = this.API_URL.concat(this.API_PATH + '/deposit/braintree/paypal/sale/');
+        this.BRAINTREE_CLIENT_TOKEN_URL = this.API_URL.concat(this.API_PATH + '/deposit/braintree/token/');
+
+        this.BRAINTREE_CLIENT_JS = 'https://js.braintreegateway.com/web/3.31.0/js/client.min.js';
+        this.BRAINTREE_PAYPAL_CHECKOUT_JS = 'https://js.braintreegateway.com/web/3.31.0/js/paypal-checkout.min.js';
+        this.BRAINTREE_HOSTED_FIELDS_JS = 'https://js.braintreegateway.com/web/3.31.0/js/hosted-fields.js';
+        this.BRAINTREE_DATA_COLLECTOR_JS = 'https://js.braintreegateway.com/web/3.31.0/js/data-collector.js';
+        this.PAYPAL_CHECKOUT_JS = 'https://www.paypalobjects.com/api/checkout.js';
+        this.HISTORY_CHART_URL = this.API_URL.concat(this.API_PATH + '/account/history/');
         this.DOCUMENT_TYPES_URL = this.API_URL.concat(this.API_PATH + '/account/documenttypes/');
         this.DOCUMENT_DELETE_URL = this.API_URL.concat(this.API_PATH + '/account/document/');
         this.GET_DOCUMENTS_URL = this.API_URL.concat(this.API_PATH + '/account/documents/');
         this.UPLOAD_FILE_URL = this.API_URL.concat(this.API_PATH + '/account/documentupload/');
-        this.DIME_TABLE_LIST_CHART = this.API_URL.concat(this.API_PATH + '/dime/tablelistchart/');
-        this.DIME_PIE_CHART = this.API_URL.concat(this.API_PATH + '/dime/piechart/');
+        this.DIME_TABLE_LIST_CHART = this.API_URL.concat(this.API_PATH + '/fund/ud10/tablelistchart/');
+        this.DIME_PIE_CHART = this.API_URL.concat(this.API_PATH + '/fund/ud10/piechart/');
         this.NEWSLETTER_URL = this.API_URL.concat(this.API_PATH + '/newsletter');
         this.LOGIN_URL = this.API_URL.concat(this.API_PATH, '/o/token/');
+        this.DASHBOARD_DEPOSIT_URL = '/deposit';
+        this.DASHBOARD_CHECKOUT_URL = '/checkout';
         this.REGISTER_URL = this.API_URL.concat( this.API_PATH, '/register/');
         this.REGISTER_VERIFY_URL = this.API_URL.concat(this.API_PATH, '/register/verify/');
-        this.USER_INFO_URL = this.API_URL.concat(this.API_PATH, '/user/');
+        this.USER_INFO_URL = this.API_URL.concat(this.API_PATH, '/account/');
         this.COUNTRY_LIST_URL = this.API_URL.concat(this.API_PATH, '/country/');
         this.STATE_LIST_URL = this.API_URL.concat(this.API_PATH, '/state/');
         this.CITY_LIST_URL = this.API_URL.concat(this.API_PATH, '/city/');
@@ -114,11 +138,17 @@ export class Environment  {
             DASHBOARD_PORT:     this.DASHBOARD_PORT,
             DASHBOARD_URL:      this.DASHBOARD_URL,
             DASHBOARD_HOSTNAME: this.DASHBOARD_HOSTNAME,
-
+            DASHBOARD_DEPOSIT_URL: this.DASHBOARD_DEPOSIT_URL,
+            DASHBOARD_CHECKOUT_URL: this.DASHBOARD_CHECKOUT_URL,
             WEBSITE_PORT:       this.WEBSITE_PORT,
             WEBSITE_URL:        this.WEBSITE_URL,
             WEBSITE_HOSTNAME:   this.WEBSITE_HOSTNAME,
-            WEBSITE_HOME:       "/"
+            WEBSITE_HOME:       "/",
+            BRAINTREE_CLIENT_JS:  this.BRAINTREE_CLIENT_JS,
+            BRAINTREE_PAYPAL_CHECKOUT_JS: this.BRAINTREE_PAYPAL_CHECKOUT_JS,
+            PAYPAL_CHECKOUT_JS:   this.PAYPAL_CHECKOUT_JS,
+            BRAINTREE_DATA_COLLECTOR_JS: this.BRAINTREE_DATA_COLLECTOR_JS,
+            BRAINTREE_HOSTED_FIELDS_JS:   this.BRAINTREE_HOSTED_FIELDS_JS
         }
 
         this.api = {
@@ -142,7 +172,11 @@ export class Environment  {
             UPLOAD_FILE_URL:      this.UPLOAD_FILE_URL,
             DOCUMENT_TYPES_URL:   this.DOCUMENT_TYPES_URL,
             GET_DOCUMENTS_URL:    this.GET_DOCUMENTS_URL,
-            DOCUMENT_DELETE_URL:  this.DOCUMENT_DELETE_URL
+            DOCUMENT_DELETE_URL:  this.DOCUMENT_DELETE_URL,
+            HISTORY_CHART_URL:    this.HISTORY_CHART_URL,
+            BRAINTREE_CLIENT_TOKEN_URL: this.BRAINTREE_CLIENT_TOKEN_URL,
+            BRAINTREE_CREATE_VISAMC_SALE_URL: this.BRAINTREE_CREATE_VISAMC_SALE_URL,
+            BRAINTREE_CREATE_PAYPAL_SALE_URL: this.BRAINTREE_CREATE_PAYPAL_SALE_URL
         }
     }
 }

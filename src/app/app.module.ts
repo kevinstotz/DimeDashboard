@@ -6,11 +6,13 @@ import { BrowserAnimationsModule } from  '@angular/platform-browser/animations';
 import { CookieModule, CookieService } from 'ngx-cookie';
 import { FormsModule, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFileUploadModule } from 'angular-material-fileupload';
 import { MatListModule } from '@angular/material/list';
-import { MatTableModule, MatDialogModule, MatOptionModule,  MatSelectModule} from '@angular/material';
+import { MatTableModule, MatDialogModule, MatOptionModule, MatMenuModule, MatSelectModule} from '@angular/material';
 import { MatTabsModule } from '@angular/material/tabs';
-import { MatInputModule, MatSlideToggleModule, MatButtonModule, MatFormFieldModule } from '@angular/material';
+import { MatInputModule, MatSlideToggleModule, MatButtonModule, MatSliderModule, MatFormFieldModule } from '@angular/material';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -20,9 +22,9 @@ import {} from 'jasmine';
 
 import { AuthGuard } from './_guards/index';
 import { JwtInterceptor, DivisionPipe } from './_helpers/index';
-import { AlertService, AuthenticationService, UserService, FileUploadService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, FileUploadService, PaymentProcessorsService } from './_services/index';
 import { DimeService, CountryListService, CityListService, StateListService, ZipcodeListService } from './_services/index';
-
+import { BraintreeService, HistoryService } from './_services/index';
 import { AboutComponent } from './about/index';
 import { AlertComponent } from './_directives/index';
 import { AppComponent }  from './app.component';
@@ -38,7 +40,9 @@ import { ProfileComponent } from './profile/index';
 import { TopmaincontentComponent } from './topmaincontent/index';
 import { DepositComponent } from './deposit/index';
 import { DocumentsComponent } from './documents/index';
-import { DimetableComponent } from './dimetable/dimetable.component';
+import { DimetableComponent } from './dimetable/index';
+import { CheckoutComponent } from './paymentprocessors/index';
+import { PaypalComponent, VisamastercardComponent } from './paymentprocessors/braintree/index';
 
 
 @NgModule({
@@ -51,8 +55,10 @@ import { DimetableComponent } from './dimetable/dimetable.component';
         FormsModule,
         HttpClientModule,
         MatButtonModule,
+        MatCheckboxModule,
         MatDialogModule,
         MatDividerModule,
+        MatExpansionModule,
         MatFileUploadModule,
         MatFormFieldModule,
         MatInputModule,
@@ -60,6 +66,7 @@ import { DimetableComponent } from './dimetable/dimetable.component';
         MatOptionModule,
         MatSelectModule,
         MatSlideToggleModule,
+        MatSliderModule,
         MatTabsModule,
         MatTableModule,
         MatTooltipModule,
@@ -76,10 +83,11 @@ import { DimetableComponent } from './dimetable/dimetable.component';
         HttpClientModule,
         MatInputModule,
         MatListModule,
+        MatMenuModule,
         MatOptionModule,
         MatSelectModule,
         MatSlideToggleModule,
-        MatSlideToggleModule
+        MatSliderModule
     ],
     declarations: [
         AboutComponent,
@@ -98,14 +106,19 @@ import { DimetableComponent } from './dimetable/dimetable.component';
         TopmaincontentComponent,
         DepositComponent,
         DocumentsComponent,
-        DimetableComponent
+        DimetableComponent,
+        CheckoutComponent,
+        PaypalComponent,
+        VisamastercardComponent
     ],
     entryComponents: [
     ],
     providers: [
-        AuthGuard,
         AlertService,
         AuthenticationService,
+        AuthGuard,
+        BraintreeService,
+        CityListService,
         CookieService,
         CountryListService,
         DimeService,
@@ -115,10 +128,11 @@ import { DimetableComponent } from './dimetable/dimetable.component';
             multi: true
         },
         FileUploadService,
-        UserService,
+        HistoryService,
+        PaymentProcessorsService,
         StateListService,
-        ZipcodeListService,
-        CityListService
+        UserService,
+        ZipcodeListService
     ],
     schemas: [ NO_ERRORS_SCHEMA ],
     bootstrap: [AppComponent]

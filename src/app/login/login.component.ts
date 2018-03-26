@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService, AuthenticationService } from '../_services/index';
-import { User, Authentication } from '../_models/index';
+import { User, AuthenticationResponse } from '../_models/index';
 import { Environment } from '../environments/index';
 
 @Component({
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
         this.loading = true;
         this.authenticationService.login(this.user.username, this.user.password)
             .subscribe(
-                  (authenticationResponse: Authentication) => {
+                  (authenticationResponse: AuthenticationResponse) => {
                     this.router.navigate([this.environment.global.DASHBOARD_URL]);
                     this.loading = false;
                 },

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LeftnavComponent } from '../leftnav/index'
 import { DimeService } from '../_services/index';
-import { NgForOf } from '@angular/common';
+import { NgForOf, PercentPipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-home',

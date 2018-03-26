@@ -13,130 +13,113 @@
                          <div class="card-content">
                              <form [formGroup]="userProfileForm" name="userProfileForm" (ngSubmit)="updateUserProfile(userProfileForm)">
                                  <div class="row">
-
                                      <div class="col-sm-4">
-                                         <div class="form-group">
-                                             <mat-form-field>
-                                                 <mat-label>Company</mat-label>
-                                             <input matInput type="text" formControlName="company">
-                                            </mat-form-field>
-                                         </div>
+                                        <mat-form-field>
+                                           <mat-label>Company</mat-label>
+                                           <input matInput type="text" formControlName="company">
+                                        </mat-form-field>
                                      </div>
 
                                      <div class="col-sm-4">
-                                         <div class="form-group">
-                                             <mat-form-field>
-                                                 <mat-label>Email</mat-label>
-                                             <input matInput type="text" formControlName="email">
-                                            </mat-form-field>
-                                         </div>
+                                         <mat-form-field>
+                                           <mat-label>Email</mat-label>
+                                           <input matInput type="text" formControlName="email">
+                                        </mat-form-field>
                                      </div>
-
                                      <div class="col-sm-4">
-                                          <img src={{userProfileForm.controls.avatar.value}}/>
+                                        <img width="200" height="200" src="{{userProfileForm.controls.avatar.value}}"/>
                                      </div>
 
                                  </div>
                                  <div class="row">
                                    <div class="col-sm-4">
-                                     <div class="form-group">
                                         <mat-form-field>
                                           <mat-label>First Name</mat-label>
                                           <input matInput type="text" formControlName="firstName" >
                                        </mat-form-field>
-                                     </div>
                                    </div>
                                    <div class="col-sm-4">
-                                     <div class="form-group">
                                         <mat-form-field>
                                           <mat-label>Last Name</mat-label>
                                           <input matInput type="text" formControlName="lastName" >
                                        </mat-form-field>
-                                     </div>
                                    </div>
 
                                    <div class="col-sm-4">
-                                     <div class="form-group">
                                         <mat-form-field>
                                           <mat-label>Phone</mat-label>
                                           <input matInput type="text" formControlName="phoneNumber" >
                                        </mat-form-field>
-                                     </div>
                                    </div>
 
                                  </div>
                                  <div class="row">
                                      <div class="col-sm-12">
-                                       <div class="form-group">
                                           <mat-form-field>
                                             <mat-label>Address</mat-label>
                                             <input matInput type="text" formControlName="address1" >
                                          </mat-form-field>
-                                       </div>
+                                     </div>
+                                 </div>
+
+                                 <div class="row">
+                                     <div class="col-sm-3">
+                                          <mat-form-field>
+                                            <mat-label class="control-label">City</mat-label>
+                                            <mat-select formControlName="city" [(ngModel)]="selectedCity">
+                                                <mat-option *ngFor="let city of cities" [value]="city">
+                                                  {{city.name}}
+                                                </mat-option>
+                                              </mat-select>
+                                         </mat-form-field>
+                                     </div>
+
+                                     <div class="col-sm-3">
+                                         <mat-form-field>
+                                           <mat-label>State</mat-label>
+                                               <mat-select formControlName="state" [(ngModel)]="selectedState">
+                                                 <mat-option *ngFor="let state of states" [value]="state">
+                                                   {{state.name}}
+                                                 </mat-option>
+                                               </mat-select>
+                                           </mat-form-field>
+                                      </div>
+
+                                      <div class="col-sm-3">
+                                           <mat-form-field>
+                                             <mat-label>Country</mat-label>
+                                             <mat-select formControlName="country" [(ngModel)]="selectedCountry" >
+                                               <mat-option *ngFor="let country of countries" [value]="country">
+                                                 {{country.name}}
+                                               </mat-option>
+                                             </mat-select>
+                                           </mat-form-field>
+                                      </div>
+
+                                     <div class="col-sm-3">
+                                          <mat-form-field>
+                                            <mat-label>Postal Code</mat-label>
+                                            <input matInput type="text" formControlName="zipcode" >
+                                         </mat-form-field>
                                      </div>
                                  </div>
                                  <div class="row">
-                                       <div class="col-sm-3">
-                                         <div class="form-group">
-                                            <mat-form-field>
-                                              <mat-label class="control-label">City</mat-label>
-                                              <mat-select formControlName="city" [(ngModel)]="selectedCity.name">
-                                                  <mat-option *ngFor="let city of cities" [value]="city">
-                                                    {{city.name}}
-                                                  </mat-option>
-                                                </mat-select>
-                                           </mat-form-field>
-                                         </div>
-                                       </div>
-
-                                       <div class="col-sm-3">
-                                          <div class="form-group">
-                                             <mat-form-field>
-                                               <mat-label>State</mat-label>
-                                                   <mat-select formControlName="state" [(ngModel)]="selectedState.name">
-                                                     <mat-option *ngFor="let state of states" [value]="state">
-                                                       {{state.name}}
-                                                     </mat-option>
-                                                   </mat-select>
-                                               </mat-form-field>
-                                           </div>
-                                        </div>
-
-                                        <div class="col-sm-3">
-                                           <div class="form-group">
-                                             <mat-form-field>
-                                               <mat-label>Country</mat-label>
-                                                   <mat-select formControlName="country" [(ngModel)]="selectedCountry" >
-                                                     <mat-option *ngFor="let country of countries" [value]="country">
-                                                       {{country.name}}
-                                                     </mat-option>
-                                                   </mat-select>
-                                               </mat-form-field>
-                                           </div>
-                                        </div>
-
-                                       <div class="col-sm-3">
-                                         <div class="form-group">
-                                            <mat-form-field>
-                                              <mat-label>Postal Code</mat-label>
-                                              <input matInput type="text" formControlName="zipcode" >
-                                           </mat-form-field>
-                                         </div>
-                                       </div>
-                                 </div>
-                                 <div class="row">
-                                     <div class="col-sm-12">
-                                         <div class="form-group">
-                                           <mat-form-field>
+                                     <div class="col-sm-3">
+                                          <mat-form-field>
                                              <mat-label>About Me</mat-label>
                                              <input matInput type="text" formControlName="about" >
                                           </mat-form-field>
-                                         </div>
+                                     </div>
+                                     <div class="col-sm-3">
+                                          <mat-form-field>
+                                             <mat-label>Date of Birth</mat-label>
+                                             <input matInput type="text" formControlName="birth_date" >
+                                          </mat-form-field>
                                      </div>
                                  </div>
 
-                                 <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
-                                 <div class="clearfix"></div>
+                               <button type="submit" class="btn btn-success">Update Profile</button>
+
                              </form>
                          </div>
                      </div>

@@ -2,7 +2,7 @@
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Environment } from '../environments/index';
 import { CookieService, CookieOptions } from 'ngx-cookie';
-import { Authentication } from '../_models/index';
+
 
 @Injectable()
 export class AuthGuard implements CanActivate {
