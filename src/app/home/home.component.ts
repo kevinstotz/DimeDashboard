@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.coins = [];
-    this.dimeService.getPieChart()
+    this.dimeService.getPieChart(153)
     .subscribe(
         data => {
            for (var i = 0; i < data.length; i++) {

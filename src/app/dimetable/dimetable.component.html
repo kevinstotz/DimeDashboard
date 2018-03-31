@@ -15,7 +15,7 @@
             <tbody>
                 <tr *ngFor="let coin of dimeTableListChart">
                     <td>{{coin.rank}}</td>
-                    <td>{{coin.currency.name}} ({{coin.currency.symbol}})</td>
+                    <td>{{coin.name}} ({{coin.symbol}})</td>
                     <td>{{coin.rebalance_price | currency: 'USD': "symbol": '1.2-2'}}</td>
                     <td><div *ngIf="coin.rebalance_price > coin.end_price; then thenPriceBlock else elsePriceBlock"></div>
                       <ng-template #thenPriceBlock><span class="text-danger"> {{coin.end_price | currency: 'USD': "symbol": '1.2-2'}}</span></ng-template>

@@ -116,8 +116,8 @@ export class Environment  {
         this.DOCUMENT_DELETE_URL = this.API_URL.concat(this.API_PATH + '/account/document/');
         this.GET_DOCUMENTS_URL = this.API_URL.concat(this.API_PATH + '/account/documents/');
         this.UPLOAD_FILE_URL = this.API_URL.concat(this.API_PATH + '/account/documentupload/');
-        this.DIME_TABLE_LIST_CHART = this.API_URL.concat(this.API_PATH + '/fund/ud10/tablelistchart/');
-        this.DIME_PIE_CHART = this.API_URL.concat(this.API_PATH + '/fund/ud10/piechart/');
+        this.DIME_TABLE_LIST_CHART = this.API_URL.concat(this.API_PATH + '/fund/tablelistchart/');
+        this.DIME_PIE_CHART = this.API_URL.concat(this.API_PATH + '/fund/piechart/');
         this.NEWSLETTER_URL = this.API_URL.concat(this.API_PATH + '/newsletter');
         this.LOGIN_URL = this.API_URL.concat(this.API_PATH, '/o/token/');
         this.DASHBOARD_DEPOSIT_URL = '/deposit';
