@@ -1,0 +1,10 @@
+  <table class="table table-hover">
+    <thead class="text-warning">
+      <th>Curency</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td *ngFor="let currency of data"><a routerLink="/currency/{{currency.symbol}}"><img src='assets/images/coins/{{currency.symbol}}-30x30.png'>{{currency.name }}</a><p><small>{{currency.symbol}}</small></p></td>
+        </tr>
+    </tbody>
+  </table>

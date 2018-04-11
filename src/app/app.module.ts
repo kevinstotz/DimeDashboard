@@ -10,8 +10,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFileUploadModule } from 'angular-material-fileupload';
 import { MatListModule } from '@angular/material/list';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule, MatDialogModule, MatOptionModule, MatMenuModule, MatSelectModule} from '@angular/material';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule, MatSlideToggleModule, MatButtonModule, MatSliderModule, MatFormFieldModule } from '@angular/material';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -24,7 +26,7 @@ import { AuthGuard } from './_guards/index';
 import { JwtInterceptor, DivisionPipe } from './_helpers/index';
 import { AlertService, AuthenticationService, UserService, FileUploadService, PaymentProcessorsService } from './_services/index';
 import { DimeService, CountryListService, CityListService, StateListService, ZipcodeListService } from './_services/index';
-import { BraintreeService, HistoryService } from './_services/index';
+import { BraintreeService, HistoryService, CurrencyService } from './_services/index';
 import { AboutComponent } from './about/index';
 import { AlertComponent } from './_directives/index';
 import { AppComponent }  from './app.component';
@@ -43,6 +45,10 @@ import { DocumentsComponent } from './documents/index';
 import { DimetableComponent } from './dimetable/index';
 import { CheckoutComponent } from './paymentprocessors/index';
 import { PaypalComponent, VisamastercardComponent } from './paymentprocessors/braintree/index';
+import { CurrencyComponent } from './currency/index';
+import { SearchComponent } from './search/index';
+import { LineChartComponent } from './linechart/index';
+import { CurrencyBasketComponent } from './currency-basket/index';
 
 
 @NgModule({
@@ -54,6 +60,7 @@ import { PaypalComponent, VisamastercardComponent } from './paymentprocessors/br
         CommonModule,
         FormsModule,
         HttpClientModule,
+        MatAutocompleteModule,
         MatButtonModule,
         MatCheckboxModule,
         MatDialogModule,
@@ -67,6 +74,7 @@ import { PaypalComponent, VisamastercardComponent } from './paymentprocessors/br
         MatSelectModule,
         MatSlideToggleModule,
         MatSliderModule,
+        MatSnackBarModule,
         MatTabsModule,
         MatTableModule,
         MatTooltipModule,
@@ -77,6 +85,7 @@ import { PaypalComponent, VisamastercardComponent } from './paymentprocessors/br
     ],
     exports: [
         CommonModule,
+        MatAutocompleteModule,
         MatButtonModule,
         MatDividerModule,
         MatFormFieldModule,
@@ -109,9 +118,14 @@ import { PaypalComponent, VisamastercardComponent } from './paymentprocessors/br
         DimetableComponent,
         CheckoutComponent,
         PaypalComponent,
-        VisamastercardComponent
+        VisamastercardComponent,
+        CurrencyComponent,
+        SearchComponent,
+        LineChartComponent,
+        CurrencyBasketComponent
     ],
     entryComponents: [
+      CurrencyBasketComponent
     ],
     providers: [
         AlertService,
@@ -121,6 +135,7 @@ import { PaypalComponent, VisamastercardComponent } from './paymentprocessors/br
         CityListService,
         CookieService,
         CountryListService,
+        CurrencyService,
         DimeService,
         {
             provide: HTTP_INTERCEPTORS,

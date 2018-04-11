@@ -10,3 +10,4 @@ export * from './file-upload.service';
 export * from './payment-processors.service';
 export * from './braintree.service';
 export * from './history.service';
+export * from './currency.service';

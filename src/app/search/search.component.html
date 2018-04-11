@@ -1,0 +1,20 @@
+
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input
+      matInput
+      name="Search"
+      placeholder="Search"
+      aria-label="Search"
+      [matAutocomplete]="auto"
+      (ngModelChange)='searchChanged($event)'
+      [ngModel]="currencyModel">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let currency of currencySearch" [value]="currency.name">
+        <img style="vertical-align:middle;" src="assets/images/coins/{{currency.symbol}}-30x30.png" height="25" />
+        <span>{{ currency.name }} </span>
+        <small> ({{currency.symbol}})</small>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
