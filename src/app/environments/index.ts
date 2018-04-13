@@ -52,6 +52,8 @@ export class Environment  {
     private DOCUMENT_DELETE_URL: string;
     private CURRENCY_LIST_URL: string;
     private CURRENCY_SEARCH_URL: string;
+    private WEIGHT_BASKET_URL: string;
+    private PREVIEW_FUND_URL: string;
 
     private BRAINTREE_CREATE_PAYPAL_SALE_URL: string;
     private BRAINTREE_CREATE_VISAMC_SALE_URL: string;
@@ -61,6 +63,10 @@ export class Environment  {
     private BRAINTREE_DATA_COLLECTOR_JS: string
     private BRAINTREE_PAYPAL_CHECKOUT_JS: string;
     private PAYPAL_CHECKOUT_JS: string;
+    private FUND_PIE_CHART: string;
+    private FUND_TABLE_URL: string;
+    private FUND_REBALANCE_PERIODS_URL: string;
+    private FUND_PREVIEW_URL: string;
 
     constructor() {
         this.SECURE = 'https://';
@@ -130,16 +136,21 @@ export class Environment  {
         this.HISTORY_CHART_URL = this.API_URL.concat(this.API_PATH + '/account/history/');
         this.CURRENCY_LIST_URL = this.COIN_URL.concat(this.COIN_PATH + '/currencylist/');
         this.CURRENCY_SEARCH_URL = this.COIN_URL.concat(this.COIN_PATH + '/currency/search');
+        this.FUND_TABLE_URL = this.API_URL.concat(this.API_PATH + '/fund/tablelistchart/');
+        this.FUND_PIE_CHART = this.API_URL.concat(this.API_PATH + '/fund/piechart/');
+        this.FUND_PREVIEW_URL = this.API_URL.concat(this.API_PATH + '/fund/preview/');
+        this.FUND_REBALANCE_PERIODS_URL = this.API_URL.concat(this.API_PATH + '/fund/rebalanceperiod/');
         this.DOCUMENT_TYPES_URL = this.API_URL.concat(this.API_PATH + '/account/documenttypes/');
         this.DOCUMENT_DELETE_URL = this.API_URL.concat(this.API_PATH + '/account/document/');
         this.GET_DOCUMENTS_URL = this.API_URL.concat(this.API_PATH + '/account/documents/');
         this.UPLOAD_FILE_URL = this.API_URL.concat(this.API_PATH + '/account/documentupload/');
-
         this.CURRENCY_LINE_CHART_URL = this.COIN_URL.concat(this.COIN_PATH + '/currency/linechart/');
         this.NEWSLETTER_URL = this.API_URL.concat(this.API_PATH + '/newsletter');
         this.LOGIN_URL = this.API_URL.concat(this.API_PATH, '/o/token/');
         this.DASHBOARD_DEPOSIT_URL = '/deposit';
         this.DASHBOARD_CHECKOUT_URL = '/checkout';
+        this.WEIGHT_BASKET_URL = '/weight';
+        this.PREVIEW_FUND_URL = '/preview';
         this.REGISTER_URL = this.API_URL.concat( this.API_PATH, '/register/');
         this.REGISTER_VERIFY_URL = this.API_URL.concat(this.API_PATH, '/register/verify/');
         this.USER_INFO_URL = this.API_URL.concat(this.API_PATH, '/account/');
@@ -153,10 +164,10 @@ export class Environment  {
             COOKIE_EXPIRATION:  this.COOKIE_EXPIRATION,
             DOMAIN:             this.DOMAIN,
 
-            DASHBOARD_PORT:     this.DASHBOARD_PORT,
-            DASHBOARD_URL:      this.DASHBOARD_URL,
-            DASHBOARD_HOSTNAME: this.DASHBOARD_HOSTNAME,
-            DASHBOARD_DEPOSIT_URL: this.DASHBOARD_DEPOSIT_URL,
+            DASHBOARD_PORT:          this.DASHBOARD_PORT,
+            DASHBOARD_URL:          this.DASHBOARD_URL,
+            DASHBOARD_HOSTNAME:     this.DASHBOARD_HOSTNAME,
+            DASHBOARD_DEPOSIT_URL:  this.DASHBOARD_DEPOSIT_URL,
             DASHBOARD_CHECKOUT_URL: this.DASHBOARD_CHECKOUT_URL,
 
             WEBSITE_PORT:       this.WEBSITE_PORT,
@@ -164,44 +175,51 @@ export class Environment  {
             WEBSITE_HOSTNAME:   this.WEBSITE_HOSTNAME,
             WEBSITE_HOME:       "/",
 
-            BRAINTREE_CLIENT_JS:  this.BRAINTREE_CLIENT_JS,
+            WEIGHT_BASKET_URL:    this.WEIGHT_BASKET_URL,
+            PREVIEW_FUND_URL:     this.PREVIEW_FUND_URL,
+
+            BRAINTREE_CLIENT_JS:          this.BRAINTREE_CLIENT_JS,
             BRAINTREE_PAYPAL_CHECKOUT_JS: this.BRAINTREE_PAYPAL_CHECKOUT_JS,
-            PAYPAL_CHECKOUT_JS:   this.PAYPAL_CHECKOUT_JS,
-            BRAINTREE_DATA_COLLECTOR_JS: this.BRAINTREE_DATA_COLLECTOR_JS,
+            PAYPAL_CHECKOUT_JS:           this.PAYPAL_CHECKOUT_JS,
+            BRAINTREE_DATA_COLLECTOR_JS:  this.BRAINTREE_DATA_COLLECTOR_JS,
             BRAINTREE_HOSTED_FIELDS_JS:   this.BRAINTREE_HOSTED_FIELDS_JS
         }
 
         this.api = {
 
-            API_PORT:             this.API_PORT,
-            API_URL:              this.API_URL,
-            API_HOSTNAME:         this.API_HOSTNAME,
-            API_PATH:             this.API_PATH,
+            API_PORT:                   this.API_PORT,
+            API_URL:                    this.API_URL,
+            API_HOSTNAME:               this.API_HOSTNAME,
+            API_PATH:                   this.API_PATH,
 
-            COIN_PORT:            this.COIN_PORT,
-            COIN_URL:             this.COIN_URL,
-            COIN_HOSTNAME:        this.COIN_HOSTNAME,
-            COIN_PATH:            this.COIN_PATH,
+            COIN_PORT:                  this.COIN_PORT,
+            COIN_URL:                   this.COIN_URL,
+            COIN_HOSTNAME:              this.COIN_HOSTNAME,
+            COIN_PATH:                  this.COIN_PATH,
 
-            CURRENCY_LINE_CHART_URL:       this.CURRENCY_LINE_CHART_URL,
-            NEWSLETTER_URL:       this.NEWSLETTER_URL,
-            LOGIN_URL:            this.LOGIN_URL,
-            REGISTER_URL:         this.REGISTER_URL,
-            REGISTER_VERIFY_URL:  this.REGISTER_VERIFY_URL,
-            USER_INFO_URL:        this.USER_INFO_URL,
-            COUNTRY_LIST_URL:     this.COUNTRY_LIST_URL,
-            STATE_LIST_URL:       this.STATE_LIST_URL,
-            CITY_LIST_URL:        this.CITY_LIST_URL,
-            ZIPCODE_LIST_URL:     this.ZIPCODE_LIST_URL,
-            UPLOAD_FILE_URL:      this.UPLOAD_FILE_URL,
-            DOCUMENT_TYPES_URL:   this.DOCUMENT_TYPES_URL,
-            GET_DOCUMENTS_URL:    this.GET_DOCUMENTS_URL,
-            DOCUMENT_DELETE_URL:  this.DOCUMENT_DELETE_URL,
-            HISTORY_CHART_URL:    this.HISTORY_CHART_URL,
-            CURRENCY_LIST_URL:    this.CURRENCY_LIST_URL,
-            CURRENCY_SEARCH_URL:  this.CURRENCY_SEARCH_URL,
+            NEWSLETTER_URL:             this.NEWSLETTER_URL,
+            LOGIN_URL:                  this.LOGIN_URL,
+            REGISTER_URL:               this.REGISTER_URL,
+            REGISTER_VERIFY_URL:        this.REGISTER_VERIFY_URL,
+            USER_INFO_URL:              this.USER_INFO_URL,
+            COUNTRY_LIST_URL:           this.COUNTRY_LIST_URL,
+            STATE_LIST_URL:             this.STATE_LIST_URL,
+            CITY_LIST_URL:              this.CITY_LIST_URL,
+            ZIPCODE_LIST_URL:           this.ZIPCODE_LIST_URL,
+            UPLOAD_FILE_URL:            this.UPLOAD_FILE_URL,
+            DOCUMENT_TYPES_URL:         this.DOCUMENT_TYPES_URL,
+            GET_DOCUMENTS_URL:          this.GET_DOCUMENTS_URL,
+            DOCUMENT_DELETE_URL:        this.DOCUMENT_DELETE_URL,
+            HISTORY_CHART_URL:          this.HISTORY_CHART_URL,
+            CURRENCY_LIST_URL:          this.CURRENCY_LIST_URL,
+            CURRENCY_SEARCH_URL:        this.CURRENCY_SEARCH_URL,
+            CURRENCY_LINE_CHART_URL:    this.CURRENCY_LINE_CHART_URL,
+            FUND_TABLE_URL:             this.FUND_TABLE_URL,
+            FUND_PIE_CHART:             this.FUND_PIE_CHART,
+            FUND_REBALANCE_PERIODS_URL: this.FUND_REBALANCE_PERIODS_URL,
+            FUND_PREVIEW_URL:           this.FUND_PREVIEW_URL,
 
-            BRAINTREE_CLIENT_TOKEN_URL: this.BRAINTREE_CLIENT_TOKEN_URL,
+            BRAINTREE_CLIENT_TOKEN_URL:       this.BRAINTREE_CLIENT_TOKEN_URL,
             BRAINTREE_CREATE_VISAMC_SALE_URL: this.BRAINTREE_CREATE_VISAMC_SALE_URL,
             BRAINTREE_CREATE_PAYPAL_SALE_URL: this.BRAINTREE_CREATE_PAYPAL_SALE_URL
         }

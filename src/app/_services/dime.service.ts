@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable }   from 'rxjs/Observable';
-import { Dime, DimeTableListChart } from '../_models/index';
+import { Fund, FundTableListChart, RebalancePeriods, FundPreview, FundLineChart } from '../_models/index';
 import { Environment } from '../environments/index';
 import 'rxjs/add/operator/map';
 
@@ -17,13 +17,20 @@ export class DimeService {
         };
     }
 
-    getPieChart(chart) {
-        return this.http.get<Dime[]>(this.environment.api.DIME_PIE_CHART + chart + "/", this.httpOptions);
+    public getPieChart(chart: number) {
+        return this.http.get<Fund[]>(this.environment.api.FUND_PIE_CHART + chart + "/", this.httpOptions);
     }
 
+    public getTableListChart(chart: number) {
+        return this.http.get<FundTableListChart[]>(this.environment.api.FUND_TABLE_URL + chart + "/", this.httpOptions);
+    }
 
-    getTableListChart(chart) {
-        return this.http.get<DimeTableListChart[]>(this.environment.api.DIME_TABLE_LIST_CHART + chart + "/", this.httpOptions);
+    public getRebalancePeriods(fund: number) {
+        return this.http.get<RebalancePeriods[]>(this.environment.api.FUND_REBALANCE_PERIODS_URL + fund + "/", this.httpOptions);
+    }
+
+    public getFundPreview(fundPreview: FundPreview[]) {
+        return this.http.get<FundLineChart[]>(this.environment.api.FUND_PREVIEW_URL, this.httpOptions);
     }
 
 }

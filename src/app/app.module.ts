@@ -10,6 +10,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFileUploadModule } from 'angular-material-fileupload';
 import { MatListModule } from '@angular/material/list';
+import { MatRadioModule } from "@angular/material";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule, MatDialogModule, MatOptionModule, MatMenuModule, MatSelectModule} from '@angular/material';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -26,6 +27,7 @@ import { AuthGuard } from './_guards/index';
 import { JwtInterceptor, DivisionPipe } from './_helpers/index';
 import { AlertService, AuthenticationService, UserService, FileUploadService, PaymentProcessorsService } from './_services/index';
 import { DimeService, CountryListService, CityListService, StateListService, ZipcodeListService } from './_services/index';
+import { DataStorageService } from './_services/index';
 import { BraintreeService, HistoryService, CurrencyService } from './_services/index';
 import { AboutComponent } from './about/index';
 import { AlertComponent } from './_directives/index';
@@ -49,6 +51,10 @@ import { CurrencyComponent } from './currency/index';
 import { SearchComponent } from './search/index';
 import { LineChartComponent } from './linechart/index';
 import { CurrencyBasketComponent } from './currency-basket/index';
+import { WeightFundComponent } from './weight-fund/index';
+import { FundWeightChartComponent } from './fund-weight-chart/index';
+import { PreviewFundComponent } from './preview-fund/index';
+import { FundLineChartComponent } from './fund-line-chart/index';
 
 
 @NgModule({
@@ -71,6 +77,7 @@ import { CurrencyBasketComponent } from './currency-basket/index';
         MatInputModule,
         MatListModule,
         MatOptionModule,
+        MatRadioModule,
         MatSelectModule,
         MatSlideToggleModule,
         MatSliderModule,
@@ -122,7 +129,11 @@ import { CurrencyBasketComponent } from './currency-basket/index';
         CurrencyComponent,
         SearchComponent,
         LineChartComponent,
-        CurrencyBasketComponent
+        CurrencyBasketComponent,
+        WeightFundComponent,
+        FundWeightChartComponent,
+        PreviewFundComponent,
+        FundLineChartComponent
     ],
     entryComponents: [
       CurrencyBasketComponent
@@ -136,6 +147,7 @@ import { CurrencyBasketComponent } from './currency-basket/index';
         CookieService,
         CountryListService,
         CurrencyService,
+        DataStorageService,
         DimeService,
         {
             provide: HTTP_INTERCEPTORS,

@@ -11,3 +11,4 @@ export * from './payment-processors.service';
 export * from './braintree.service';
 export * from './history.service';
 export * from './currency.service';
+export * from './data-storage.service';

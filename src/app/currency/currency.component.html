@@ -33,7 +33,7 @@
                         <td>
                           <mat-checkbox
                             id={{currency.id}}
-                            [checked]="currencyBasket.indexOf(currency.id) >= 0"
+                            [checked]="currencyBasket.indexOf(currency.id) > -1"
                             class="example-margin"
                             (change)="currencyCheckBoxClicked($event, currency.id)"
                             [align]="align">

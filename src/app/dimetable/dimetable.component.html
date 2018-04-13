@@ -13,7 +13,7 @@
                 <th>Change</th>
             </thead>
             <tbody>
-                <tr *ngFor="let coin of dimeTableListChart">
+                <tr *ngFor="let coin of fundTableListChart">
                     <td>{{coin.rank}}</td>
                     <td>{{coin.name}} ({{coin.symbol}})</td>
                     <td>{{coin.rebalance_price | currency: 'USD': "symbol": '1.2-2'}}</td>

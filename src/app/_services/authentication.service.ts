@@ -27,7 +27,6 @@ export class AuthenticationService {
         this.httpOptions = {
             headers: new HttpHeaders({ 'Content-Type': 'application/json' })
         };
-        this.environment = new Environment();
     }
 
     public getTokenExpiration() {
