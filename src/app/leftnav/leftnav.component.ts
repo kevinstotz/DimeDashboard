@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LeftnavitemComponent } from '../_directives/index';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-leftnav',

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LeftnavComponent } from '../leftnav/index'
 import { DimeService } from '../_services/index';
+import { GenericResponse, Fund } from '../_models/index';
 import { NgForOf, PercentPipe } from '@angular/common';
 
 
@@ -10,26 +11,22 @@ import { NgForOf, PercentPipe } from '@angular/common';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  private coins: object[] = [];
+  public coins: Array<Fund>;
 
   constructor(private dimeService: DimeService) { }
 
   ngOnInit() {
-    this.coins = [];
     this.dimeService.getPieChart(153)
     .subscribe(
-        data => {
-           for (var i = 0; i < data.length; i++) {
-                var obj = data[i];
-                this.coins.push(obj);
-                //items[i] = +obj.value;
-                //labels[i] = String(obj.name);
+        ( fund: Fund[] ) => {
+           this.coins = [];
+           for (var i of fund ) {
+                this.coins.push(i);
            }
         },
-        errorResponse => {
+        ( errorResponse: GenericResponse ) => {
           console.log(errorResponse);
     });
-
   }
 
 }

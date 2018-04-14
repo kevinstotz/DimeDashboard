@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2 fund-weight-controls">
+      <div [formGroup]="allocationOptionsForm" >
+        <mat-radio-group formControlName="allocationOption" class="fund-weight-radio-group">
+          <mat-radio-button
+            class="fund-weight-radio-button"
+            (click)="allocationChange(allocation)"
+            *ngFor="let allocation of allocationOptions"
+            [checked]="allocation.id == 1"
+            [value]="allocation.id">
+            {{allocation.option}}
+          </mat-radio-button>
+        </mat-radio-group>
+        <hr>
+        <div *ngIf="allocationOptionsForm.controls['allocationOption'].value != 1">
+          <mat-select placeholder="Rebalance Period" formControlName="rebalanceOption" required>
+            <mat-option
+              *ngFor="let rebalance of rebalanceOptions"
+              [value]="rebalance.id"
+              [selected]="rebalance.id == 0">
+              {{ rebalance.period }}
+            </mat-option>
+          </mat-select>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-10 fund-weight-chart">
+      <div>
+        <canvas id="doughnut-chart">{{ chart }}</canvas>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2 fund-weight-controls">
+      <button mat-button (click)="preview()">Preview Fund</button>
+  </div>
+</div>

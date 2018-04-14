@@ -1,0 +1,30 @@
+<div class="displaybox">
+  <div *ngIf="isLoading" class="displayImage">
+    <img class="displaybox" src="/assets/images/coins/bowlingball.gif">
+  </div>
+  <canvas id="line-chart-{{ currencyId }}">{{ chart }}</canvas>
+</div>
+
+
+<style>
+.displayImage {
+    top: 0px;
+    width: 270px;
+    height: 80px;
+    font-size: 6px;
+    border: 2px 2px 2px 2px;
+    border-width: thin;
+    background-color: '#29293d';
+    border-color: '#666699';
+  }
+.displaybox {
+    float: right;
+    width: 270px;
+    height: 80px;
+    font-size: 6px;
+    border: 2px 2px 2px 2px;
+    border-width: thin;
+    background-color: '#29293d';
+    border-color: '#666699';
+  }
+</style>

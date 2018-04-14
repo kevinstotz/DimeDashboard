@@ -1,0 +1,62 @@
+<div class="main-panel">
+  <app-topmaincontent></app-topmaincontent>
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card card-nav-tabs">
+              <div class="card-header" data-background-color="green">
+                <h4 class="title">Currencies</h4>
+                <p class="category">Currencies Available for your basket</p>
+              </div>
+            <div class="card-content table-responsive">
+              <table class="table table-hover">
+                <thead class="text-success">
+                  <td><button mat-raised-button (click)="createFund()">Create Fund</button>
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td><app-search></app-search></td>
+                  <td>Results: {{ currencyResult.count }}</td>
+                </thead>
+              </table>
+              <table class="table table-hover">
+                <thead class="text-warning">
+                    <th>Select</th>
+                    <th>Name</th>
+                    <th>Market Cap (M)</th>
+                    <th>Change</th>
+                    <th style="float:right;">Price History (1M)</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let currency of currencyResult.results">
+                        <td>
+                          <mat-checkbox
+                            id={{currency.id}}
+                            [checked]="currencyBasket.indexOf(currency.id) > -1"
+                            class="example-margin"
+                            (change)="currencyCheckBoxClicked($event, currency.id)"
+                            [align]="align">
+                          </mat-checkbox>
+                        </td>
+                        <td><a routerLink="/currency/{{currency.symbol}}"><img src='assets/images/coins/{{currency.symbol}}-30x30.png'>{{currency.name }}</a><p><small>{{currency.symbol}}</small></p></td>
+                        <td>{{currency.market_cap / 1000000 | currency: 'USD': "symbol": '1.0'}}</td>
+                        <td></td>
+                        <td><app-linechart [currencyId]="currency.id"></app-linechart></td>
+                    </tr>
+                    <tr>
+                      <td><button mat-button (click)="previous()">Previous</button></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td style="float: right;"><button mat-button (click)="next()">Next</button></td>
+                    </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

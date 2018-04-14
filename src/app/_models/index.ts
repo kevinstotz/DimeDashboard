@@ -9,3 +9,5 @@ export * from './dime';
 export * from './file-upload';
 export * from './braintree';
 export * from './history';
+export * from './currency';
+export * from './search';

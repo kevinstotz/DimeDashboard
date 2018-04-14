@@ -11,7 +11,7 @@
     "ng": "ng",
     "start": "ng serve --environment=dev --host 0.0.0.0 --disable-host-check --port 10005",
     "startProd": "ng serve --environment=prod --host 172.31.2.86 --disable-host-check --port 10005",
-    "startwp": "webpack-dev-server  --display-error-details --inline --progress --port 10004",
+    "startwp": "webpack-dev-server  --display-error-details --inline --progress --port 10005",
     "test": "ng test",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
     "build": "rimraf dist && webpack  --display-error-details --config config/webpack.prod.js --progress --profile --bail",
@@ -23,6 +23,7 @@
     "@angular/animations": "^5.2.9",
     "@angular/cdk": "^5.2.4",
     "@angular/cli": "^1.7.4",
+<<<<<<< HEAD
     "@angular/common": "^5.2.9",
     "@angular/compiler": "^5.2.9",
     "@angular/compiler-cli": "^5.2.9",
