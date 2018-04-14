@@ -30,7 +30,7 @@ export class DimeService {
     }
 
     public getFundPreview(fundPreview: FundPreview[]) {
-        return this.http.get<FundLineChart[]>(this.environment.api.FUND_PREVIEW_URL, this.httpOptions);
+        return this.http.post<FundLineChart[]>(this.environment.api.FUND_PREVIEW_URL, '{ "fundPreview": ' + JSON.stringify(fundPreview)  + '}', this.httpOptions);
     }
 
 }

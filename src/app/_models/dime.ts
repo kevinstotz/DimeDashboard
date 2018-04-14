@@ -18,15 +18,11 @@ export class RebalancePeriods {
 }
 
 export class FundPreview {
-  id: number;
+  currencyId: number;
   percent: number;
 }
 
 export class FundLineChart {
-  rank: number;
-  percent: number;
-  rebalance_price: number;
-  end_price: number;
-  symbol: string;
-  name: string;
+  name: number;
+  value: number;
 }

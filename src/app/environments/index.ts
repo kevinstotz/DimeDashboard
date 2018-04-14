@@ -138,7 +138,7 @@ export class Environment  {
         this.CURRENCY_SEARCH_URL = this.COIN_URL.concat(this.COIN_PATH + '/currency/search');
         this.FUND_TABLE_URL = this.API_URL.concat(this.API_PATH + '/fund/tablelistchart/');
         this.FUND_PIE_CHART = this.API_URL.concat(this.API_PATH + '/fund/piechart/');
-        this.FUND_PREVIEW_URL = this.API_URL.concat(this.API_PATH + '/fund/preview/');
+        this.FUND_PREVIEW_URL = this.COIN_URL.concat(this.COIN_PATH + '/fund/preview/');
         this.FUND_REBALANCE_PERIODS_URL = this.API_URL.concat(this.API_PATH + '/fund/rebalanceperiod/');
         this.DOCUMENT_TYPES_URL = this.API_URL.concat(this.API_PATH + '/account/documenttypes/');
         this.DOCUMENT_DELETE_URL = this.API_URL.concat(this.API_PATH + '/account/document/');
