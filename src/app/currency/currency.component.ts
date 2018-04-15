@@ -49,7 +49,7 @@ export class CurrencyComponent implements OnInit {
 
   private createFund() : void {
     this.environment = new Environment();
-    this.router.navigate([this.environment.global.WEIGHT_BASKET_URL]);
+    this.router.navigate([this.environment.global.WEIGHT_FUND_URL]);
   }
 
   private findObjectByKey(array, key, value) : Currency {

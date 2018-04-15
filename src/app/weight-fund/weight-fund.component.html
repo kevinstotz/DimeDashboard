@@ -1,20 +1,33 @@
 
-
 <div class="main-panel">
   <app-topmaincontent></app-topmaincontent>
   <div class="content">
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-sm-10">
           <div class="card ">
             <div class="card-header" data-background-color="green">
                 <h4 class="title">Allocate Weights</h4>
                 <p class="category">Weight Your Fund</p>
             </div>
             <div class="card-content">
-              <app-fund-weight-chart [currencies]="fundBasket"></app-fund-weight-chart>
-            </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <app-fund-weight-chart [currencies]="fundBasket"></app-fund-weight-chart>
+                </div>
+              </div>
+              <div class="row"><div class="col-sm-12"><hr></div></div>
+              <div class="row">
+                <div class="col-sm-2 fund-weight-controls">
+                  <button mat-button (click)="back()">Change Fund</button>
+                </div>
+                <div class="col-sm-8"></div>
+                <div class="col-sm-2 fund-weight-controls">
+                  <button type="submit" mat-button (click)="previewFund()">Preview Fund</button>
+                </div>
+              </div>
 
+            </div>
           </div>
         </div>
       </div>

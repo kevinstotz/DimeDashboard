@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Currency, GenericResponse, FundPreview, FundLineChart } from '../_models/index';
 import { DataStorageService, DimeService } from '../_services/index';
 import { Environment } from '../environments/index';
+import { Router} from '@angular/router';
 
 
 @Component({
@@ -11,10 +12,12 @@ import { Environment } from '../environments/index';
 })
 export class PreviewFundComponent implements OnInit {
   private fundPreview: FundPreview[];
-  private fundLineChart: FundLineChart[] =  [ ];
+  private fundLineChart: FundLineChart[] = [];
+  private environment: Environment;
 
   constructor(private dataStorageService: DataStorageService,
-              private dimeService: DimeService) {
+              private dimeService: DimeService,
+              private router: Router) {
     this.fundPreview = [];
     let currencies = <Currency[]>JSON.parse(dataStorageService.getItem('fundBasket'));
 
@@ -35,6 +38,16 @@ export class PreviewFundComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  private back() {
+    this.environment = new Environment();
+    this.router.navigate([this.environment.global.WEIGHT_FUND_URL]);
+  }
+
+  private createFund() {
+    this.environment = new Environment();
+    this.router.navigate([this.environment.global.MYFUNDS_URL]);
   }
 
 }

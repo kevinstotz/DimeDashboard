@@ -78,11 +78,6 @@ export class FundWeightChartComponent implements OnInit {
 
   }
 
-  private preview() {
-    this.environment = new Environment();
-    this.router.navigate([this.environment.global.PREVIEW_FUND_URL]);
-  }
-
   private allocationChange(allocation) {
     switch (allocation.id) {
       case 1:

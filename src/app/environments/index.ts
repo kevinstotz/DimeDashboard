@@ -52,8 +52,10 @@ export class Environment  {
     private DOCUMENT_DELETE_URL: string;
     private CURRENCY_LIST_URL: string;
     private CURRENCY_SEARCH_URL: string;
-    private WEIGHT_BASKET_URL: string;
+    private WEIGHT_FUND_URL: string;
     private PREVIEW_FUND_URL: string;
+    private MYFUNDS_URL:  string;
+    private SELECT_COINS_FUND_URL: string;
 
     private BRAINTREE_CREATE_PAYPAL_SALE_URL: string;
     private BRAINTREE_CREATE_VISAMC_SALE_URL: string;
@@ -149,8 +151,10 @@ export class Environment  {
         this.LOGIN_URL = this.API_URL.concat(this.API_PATH, '/o/token/');
         this.DASHBOARD_DEPOSIT_URL = '/deposit';
         this.DASHBOARD_CHECKOUT_URL = '/checkout';
-        this.WEIGHT_BASKET_URL = '/weight';
+        this.WEIGHT_FUND_URL = '/weight';
         this.PREVIEW_FUND_URL = '/preview';
+        this.SELECT_COINS_FUND_URL = '/currency';
+        this.MYFUNDS_URL = '/myfunds';
         this.REGISTER_URL = this.API_URL.concat( this.API_PATH, '/register/');
         this.REGISTER_VERIFY_URL = this.API_URL.concat(this.API_PATH, '/register/verify/');
         this.USER_INFO_URL = this.API_URL.concat(this.API_PATH, '/account/');
@@ -175,8 +179,10 @@ export class Environment  {
             WEBSITE_HOSTNAME:   this.WEBSITE_HOSTNAME,
             WEBSITE_HOME:       "/",
 
-            WEIGHT_BASKET_URL:    this.WEIGHT_BASKET_URL,
-            PREVIEW_FUND_URL:     this.PREVIEW_FUND_URL,
+            WEIGHT_FUND_URL:        this.WEIGHT_FUND_URL,
+            PREVIEW_FUND_URL:       this.PREVIEW_FUND_URL,
+            SELECT_COINS_FUND_URL:  this.SELECT_COINS_FUND_URL,
+            MYFUNDS_URL:            this.MYFUNDS_URL,
 
             BRAINTREE_CLIENT_JS:          this.BRAINTREE_CLIENT_JS,
             BRAINTREE_PAYPAL_CHECKOUT_JS: this.BRAINTREE_PAYPAL_CHECKOUT_JS,

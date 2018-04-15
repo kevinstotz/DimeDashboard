@@ -18,6 +18,14 @@ export class FundLineChartComponent implements OnInit {
      display: false,
        text: 'Composition of The Fund'
    },
+   legend: {
+            display: true,
+            labels: {
+                fontColor: 'rgb(255, 99, 132)',
+                boxWidth: 0,
+                fontSize: 16
+            }
+   },
    scales: {
         xAxes: [
            {
@@ -53,9 +61,10 @@ export class FundLineChartComponent implements OnInit {
               label: function(tooltipItem, data) {
                 var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
                 var dateObject = new Date(data['labels'][tooltipItem.index]);
-                var value = 100.0 * parseFloat(data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]);
-                let t:string = value.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
-                return dateObject.getDate() + ' -> $'+ t;
+                var monthIndex = dateObject.getMonth();
+                var value = parseFloat(data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]);
+                let t: string = value.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+                return months[monthIndex] + ' ' + dateObject.getDate() + ': $'+ t;
               },
               title: function(tooltipItem, data) {
                   return;
@@ -63,7 +72,7 @@ export class FundLineChartComponent implements OnInit {
               labelColor: function(tooltipItem, chart) {
                   return {
                       borderColor: 'rgb(255, 255, 0)',
-                      backgroundColor: 'rgb(255, 255, 0)'
+                      backgroundColor: 'rgb(255, 0, 0)'
                   }
               },
               labelTextColor:function(tooltipItem, chart){
@@ -86,7 +95,14 @@ ngOnChanges() {
       this.lineData[i] = fundLineChart.value;
     }
     this.lineDataObject['data']['labels'] = dateLabels;
-    this.lineDataObject['data']['datasets'] = [{ data: this.lineData, label: 'My Fund', borderColor: "#21b082", fill: false }];
+    this.lineDataObject['data']['datasets'] = [
+      {
+        data: this.lineData,
+        label: 'My Fund',
+        borderColor: "#21b082",
+        fill: 'origin'
+      }
+    ];
     this.lineChart.update();
   }
 }
@@ -99,7 +115,7 @@ private lineDataObject : object = {
           data: '',
           label: 'label',
           borderColor: "#21b082",
-          fill: false
+          fill: 'origin'
       }]
    },
    options: this.lineOptions
@@ -126,11 +142,20 @@ ngAfterViewInit() {
       pointBackgroundColors[i]= "#BE0081";
       pointHoverRadius[i] = 8;
       pointRadius[i] = 3;
-
   }
 
   this.lineDataObject['data']['labels'] = dateLabels;
-  this.lineDataObject['data']['datasets'] = [{ data: this.lineData, pointRadius: pointRadius, pointHoverRadius: pointHoverRadius, pointBackgroundColor: pointBackgroundColors, label: 'My Fund', borderColor: "#21b082", fill: false }];
+  this.lineDataObject['data']['datasets'] = [
+    {
+      data: this.lineData,
+      pointRadius: pointRadius,
+      pointHoverRadius: pointHoverRadius,
+      pointBackgroundColor: pointBackgroundColors,
+      label: 'My Fund',
+      borderColor: "#21b082",
+      fill: 'origin'
+    }
+  ];
   this.lineChart = new Chart('line-chart', this.lineDataObject );
 }
 
